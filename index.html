@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="dark" lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="SÉVERIN CÉCÉ KOLIÉ — Junior Cybersécurité & Administration Systèmes | Support IT. Portfolio technique." />
+    <meta name="keywords" content="Cybersécurité, Administration Systèmes, Support IT, Réseau, Linux, Windows Server, Active Directory, SÉVERIN CÉCÉ KOLIÉ, Portfolio Tech" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SÉVERIN CÉCÉ KOLIÉ | Junior Cybersécurité & Administration Systèmes" />
+    <meta property="og:description" content="Découvrez mon univers technique : Cybersécurité, Administration Systèmes, Support IT et projets pratiques." />
+    <meta property="og:image" content="images/og-preview.jpg" />
+    <meta property="og:type" content="website" />
+
+    <title>S.C. KOLIE | Junior Cybersécurité & Administration Systèmes</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="alternate icon" href="favicon.svg" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#aeecff",
+                        "on-secondary-container": "#005b6c",
+                        "outline-variant": "#44474d",
+                        "on-surface": "#d4e4fa",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#8f9097",
+                        "surface-container": "#122131",
+                        "tertiary-fixed": "#dce2f7",
+                        "on-tertiary-fixed": "#141b2b",
+                        "surface-container-lowest": "#010f1f",
+                        "surface-variant": "#273647",
+                        "surface": "#051424",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-low": "#0d1c2d",
+                        "surface-container-highest": "#273647",
+                        "on-primary-fixed-variant": "#39475f",
+                        "inverse-on-surface": "#233143",
+                        "background": "#051424",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#c5c6cd",
+                        "tertiary": "#c0c6db",
+                        "on-secondary": "#003641",
+                        "on-primary-container": "#74829d",
+                        "surface-container-high": "#1c2b3c",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#121928",
+                        "on-tertiary-fixed-variant": "#404758",
+                        "surface-bright": "#2c3a4c",
+                        "secondary-fixed-dim": "#00d9ff",
+                        "inverse-surface": "#d4e4fa",
+                        "secondary": "#aeecff",
+                        "primary-fixed-dim": "#b9c7e4",
+                        "on-background": "#d4e4fa",
+                        "surface-dim": "#051424",
+                        "on-primary-fixed": "#0d1c32",
+                        "secondary-container": "#00d9ff",
+                        "on-secondary-fixed-variant": "#004e5d",
+                        "surface-tint": "#b9c7e4",
+                        "error": "#ffb4ab",
+                        "on-primary": "#233148",
+                        "on-tertiary-container": "#7b8295",
+                        "primary": "#b9c7e4",
+                        "inverse-primary": "#515f78",
+                        "primary-container": "#0a192f",
+                        "on-tertiary": "#293040",
+                        "tertiary-fixed-dim": "#c0c6db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "16px",
+                        "unit": "4px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "margin-safe": "32px"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-hidden cyber-theme">
+    <!-- Global Background Shader ANIMATION_2 -->
+    <div class="fixed inset-0 w-full h-full -z-20 opacity-40">
+        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
+    </div>
+    <div class="fixed inset-0 cyber-grid -z-10 pointer-events-none"></div>
+
+    <!-- Intro Splash Screen -->
+    <div id="splash-screen" class="splash-screen fixed inset-0 z-[10000] bg-background flex flex-col items-center justify-center p-6 sm:p-gutter text-center">
+        <div class="w-full max-w-md space-y-4" id="loading-sequence">
+             <div class="soc-header flex justify-between font-mono text-[10px] sm:text-xs text-secondary-fixed mb-6 sm:mb-8">
+                <span class="flicker-text">INITIALISATION_DU_SYSTÈME...</span>
+                <span id="loading-percent">00%</span>
+            </div>
+            <div class="loading-items-container text-left space-y-2">
+                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
+                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
+                    <span class="font-mono text-xs">Analyse de l'infrastructure terminée</span>
+                </div>
+                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
+                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
+                    <span class="font-mono text-xs">Contrôle du pare-feu validé</span>
+                </div>
+                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
+                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
+                    <span class="font-mono text-xs">Politiques de sécurité chargées</span>
+                </div>
+                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
+                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
+                    <span class="font-mono text-xs">Vérification d'identité en cours...</span>
+                </div>
+            </div>
+            <div class="auth-message hidden mt-8 text-secondary-fixed font-bold tracking-widest animate-pulse flex items-center justify-center gap-2" id="auth-success">
+                <span class="material-symbols-outlined">check_circle</span> ACCÈS AUTORISÉ
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="fixed inset-0 z-[60] transform -translate-x-full transition-transform duration-300 md:hidden" id="drawer">
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleDrawer()"></div>
+        <aside class="w-[85vw] max-w-80 flex flex-col bg-surface-container rounded-r-xl h-full border-r border-white/10 shadow-2xl relative z-10">
+            <div class="p-5 sm:p-6 border-b border-white/5 flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full overflow-hidden border border-secondary-fixed">
+                        <img class="w-full h-full object-cover" src="images/profile-photo.jpg" alt="Sévérin Cécé KOLIE" />
+                    </div>
+                    <div>
+                        <h3 class="text-secondary-fixed font-bold text-lg">S.C. KOLIE</h3>
+                        <p class="text-on-surface-variant text-[10px] uppercase tracking-wider">Junior Cybersécurité &amp; Admin. Systèmes</p>
+                    </div>
+                </div>
+                <div class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-mono text-secondary-fixed self-start">SYSTÈME_ACTIF</div>
+            </div>
+            <nav class="flex-1 py-4 flex flex-col gap-1">
+                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#hero" onclick="toggleDrawer()">
+                    <span class="material-symbols-outlined">terminal</span> Terminal
+                </a>
+                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#projects" onclick="toggleDrawer()">
+                    <span class="material-symbols-outlined">code</span> Projects
+                </a>
+                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#skills" onclick="toggleDrawer()">
+                    <span class="material-symbols-outlined">security</span> SecOps
+                </a>
+                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#contact" onclick="toggleDrawer()">
+                    <span class="material-symbols-outlined">mail</span> Contact
+                </a>
+            </nav>
+        </aside>
+    </div>
+
+    <!-- Top App Bar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
+        <div class="flex justify-between items-center px-4 py-3 sm:px-6 sm:py-4 max-w-container-max mx-auto">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button class="md:hidden text-secondary-fixed active:scale-95 transition-transform p-1 -ml-1" onclick="toggleDrawer()" aria-label="Ouvrir le menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="#hero" class="flex items-center gap-2 sm:gap-2.5 group">
+                    <svg class="w-7 h-7 sm:w-8 sm:h-8 shrink-0" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#00D9FF" stroke-width="1.6" />
+                        <path d="M20 12 L27 15.5 V22 C27 26 24 28.5 20 30 C16 28.5 13 26 13 22 V15.5 Z" fill="rgba(0,217,255,0.12)" stroke="#00D9FF" stroke-width="1.4" />
+                        <path d="M17 20.5 L19.3 22.8 L23.5 18.2" fill="none" stroke="#00D9FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="text-lg sm:text-xl font-bold text-secondary-fixed tracking-tight group-hover:opacity-80 transition-opacity">S.C. KOLIE</div>
+                </a>
+            </div>
+            <nav class="hidden md:flex gap-8">
+                <a class="text-secondary-fixed font-bold border-b-2 border-secondary-fixed transition-colors" href="#hero">Terminal</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#projects">Projects</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#skills">SecOps</a>
+                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="pt-20 opacity-0 transition-opacity duration-1000">
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-24 sm:py-20 overflow-hidden" id="hero">
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                <div id="threejs-container-ANIMATION_3" class="w-full h-full max-w-[380px] sm:max-w-[600px] md:max-w-[800px] max-h-[380px] sm:max-h-[600px] md:max-h-[800px] opacity-60"></div>
+            </div>
+            <div class="relative z-10 w-full max-w-4xl text-center flex flex-col items-center">
+                <div class="profile-photo-frame w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full border-4 border-secondary-fixed/30 p-1 mb-6 sm:mb-8">
+                    <img class="w-full h-full object-cover rounded-full" src="images/profile-photo.jpg" alt="Sévérin Cécé KOLIE" />
+                </div>
+                <div class="inline-block px-3 py-1 bg-secondary-container/20 border border-secondary-fixed/30 rounded-full mb-5 sm:mb-6 max-w-full">
+                    <span class="text-secondary-fixed font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em]">Cybersécurité | Administration Systèmes | Support IT</span>
+                </div>
+                <h1 class="font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl mb-5 sm:mb-6 tracking-tight text-on-surface glitch-text leading-tight" data-text="JUNIOR CYBERSÉCURITÉ & ADMINISTRATION SYSTÈMES">
+                    JUNIOR CYBERSÉCURITÉ &amp; <br />
+                    <span class="text-secondary-fixed drop-shadow-[0_0_15px_rgba(0,217,255,0.3)]">ADMINISTRATION SYSTÈMES</span>
+                </h1>
+                <!-- Terminal Effect -->
+                <div class="w-full max-w-lg glass-card rounded-xl overflow-hidden mb-8 sm:mb-12 shadow-2xl">
+                    <div class="bg-white/5 px-4 py-2 flex items-center justify-between">
+                        <div class="terminal-dots flex gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-red-500/70"></span>
+                            <span class="w-2 h-2 rounded-full bg-yellow-500/70"></span>
+                            <span class="w-2 h-2 rounded-full bg-green-500/70"></span>
+                        </div>
+                        <div class="text-[10px] font-mono text-on-surface-variant">bash — 80x24</div>
+                    </div>
+                    <div class="p-4 text-left font-mono text-sm text-secondary-fixed min-h-[120px]">
+                        <div class="flex gap-2">
+                            <span class="text-on-surface-variant">$</span>
+                            <span id="typing-text"></span><span class="animate-pulse">_</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 w-full sm:w-auto">
+                    <a class="bg-secondary-container text-on-secondary-fixed font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:scale-105 transition-transform active:scale-95 active-glow shadow-lg shadow-secondary-container/20" href="#contact">
+                        <span class="material-symbols-outlined">mail</span> Contact Moi
+                    </a>
+                    <a class="border border-secondary-fixed/50 text-secondary-fixed font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-secondary-fixed/10 transition-all active:scale-95" href="#projects">
+                        <span class="material-symbols-outlined">terminal</span> View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+                <span class="material-symbols-outlined text-secondary-fixed/50">expand_more</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="about">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div class="space-y-6 md:space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-secondary-fixed mb-2">À_PROPOS_DE_MOI</h2>
+                        <div class="h-1 w-20 bg-secondary-fixed rounded-full"></div>
+                    </div>
+                    <p class="text-on-surface-variant text-lg leading-relaxed">
+                        Junior Cybersécurité &amp; Administration Systèmes, je m'intéresse à la sécurisation et au bon fonctionnement des infrastructures IT : administration Linux et Windows, dépannage réseau, et bonnes pratiques de cybersécurité. Curieux et méthodique, je développe mes compétences à travers des projets pratiques en administration système, en support IT et en sécurité, avec l'ambition de devenir un professionnel fiable de l'infrastructure et de la sécurité informatique.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center">
+                            <span class="text-3xl font-bold text-secondary-fixed">08+</span>
+                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Certificats</span>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center">
+                            <span class="text-3xl font-bold text-secondary-fixed">05+</span>
+                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Projets Clés</span>
+                        </div>
+                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center col-span-2 md:col-span-1">
+                            <span class="text-3xl font-bold text-secondary-fixed">24/7</span>
+                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Surveillance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-secondary-fixed/10 blur-3xl rounded-full"></div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl relative overflow-hidden">
+                        <div class="scanline-effect"></div>
+                        <h3 class="font-mono text-secondary-fixed mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined">school</span> Parcours Académique
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-3 h-3 rounded-full bg-secondary-fixed shadow-[0_0_10px_#00D9FF]"></div>
+                                    <div class="w-px h-full bg-white/10"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-on-surface">Licence — Mathématiques-Informatique</h4>
+                                    <p class="text-sm text-on-surface-variant">2023 - 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-3 h-3 rounded-full bg-white/30"></div>
+                                    <div class="w-px h-full bg-white/10"></div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-on-surface">Baccalauréat</h4>
+                                    <p class="text-sm text-on-surface-variant">2022 - 2023</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section bg-surface-container-low px-4 sm:px-6 py-16 md:py-24" id="skills">
+            <div class="max-w-container-max mx-auto">
+                <div class="text-center mb-10 md:mb-16">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed">COMPÉTENCES_TECHNIQUES</h2>
+                    <p class="text-on-surface-variant mt-2 font-mono text-sm sm:text-base">Carte des compétences et outils actuels</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
+                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">security</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6">Cybersecurity</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Nmap</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Metasploit</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Wireshark</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Burp Suite</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
+                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">dns</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6">Administration Systèmes</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Linux</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Windows Server</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Active Directory / GPO</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">VMware</span>
+                        </div>
+                    </div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
+                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
+                            <span class="material-symbols-outlined text-3xl">support_agent</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-6">Support IT &amp; Réseau</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Dépannage réseau</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">VPN / SSH</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Python/Django</span>
+                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="projects">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-4 md:gap-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed">RAPPORTS_DE_MISSIONS</h2>
+                    <p class="text-on-surface-variant mt-2 max-w-xl text-sm sm:text-base">Une sélection de mes travaux en développement et sécurité.</p>
+                </div>
+                <a class="font-mono text-secondary-fixed flex items-center gap-2 hover:underline text-sm sm:text-base" href="https://github.com/severcece">
+                    VOIR_TOUS_LES_DÉPÔTS <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <!-- TEEBUSINESS -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative h-48 sm:h-64 overflow-hidden bg-gradient-to-br from-secondary-fixed/20 to-surface-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-secondary-fixed/50">storefront</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+                        <div class="absolute bottom-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold rounded-full uppercase">Full-Stack</span>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <title-group>
+                            <h3 class="text-2xl font-bold mb-3">TEEBUSINESS Platform</h3>
+                            <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Solution de gestion commerciale et e-commerce avec architecture micro-services.</p>
+                        </title-group>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Django</span>
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Python</span>
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">CSS3</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a class="flex-1 py-3 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors" href="https://github.com/severcece/TEEBUSINESS">
+                                <span class="material-symbols-outlined text-lg">code</span> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- ForumCybersecurite -->
+                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative h-48 sm:h-64 overflow-hidden bg-gradient-to-br from-red-500/20 to-surface-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-6xl text-red-400/50">security</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+                        <div class="absolute bottom-4 left-4 flex gap-2">
+                            <span class="px-3 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded-full uppercase border border-red-500/30">Focus Sécurité</span>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-2xl font-bold mb-3">Forum Cybersécurité</h3>
+                        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Plateforme d'échange communautaire pour les experts en sécurité.</p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">HTML5</span>
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">CSS3</span>
+                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Sécurité</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a class="flex-1 py-3 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors" href="https://github.com/severcece/ForumCybersecurite">
+                                <span class="material-symbols-outlined text-lg">code</span> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Extra Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-6 md:mt-8">
+                <div class="glass-card p-6 rounded-2xl flex flex-col">
+                    <h4 class="font-bold text-lg mb-2">GestionPharmacie</h4>
+                    <p class="text-xs text-on-surface-variant flex-1">Système ERP sécurisé pour la gestion de stocks médicaux.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-[10px] font-mono text-secondary-fixed">PHP/SQL</span>
+                        <a href="https://github.com/severcece/GestionPharmacie"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col">
+                    <h4 class="font-bold text-lg mb-2">Debout-Wanindara</h4>
+                    <p class="text-xs text-on-surface-variant flex-1">Application mobile de sensibilisation citoyenne.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-[10px] font-mono text-secondary-fixed">PHP/JS</span>
+                        <a href="https://github.com/severcece/Debout-Wanindara"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl flex flex-col">
+                    <h4 class="font-bold text-lg mb-2">LesDiplomates</h4>
+                    <p class="text-xs text-on-surface-variant flex-1">Plateforme de gestion événementielle et protocolaire.</p>
+                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-[10px] font-mono text-secondary-fixed">Django/Python</span>
+                        <a href="https://github.com/severcece/LesDiplomates"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="certifications">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4 md:gap-6">
+                <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed text-center md:text-left">CERTIFICATS_VALIDÉS</h2>
+                <button onclick="toggleCertificationsView()" class="bg-secondary-container text-on-secondary-fixed font-bold px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform active:scale-95 self-center md:self-end">
+                    <span class="material-symbols-outlined">fullscreen</span> Agrandir
+                </button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6" id="certifications-grid">
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/cybersecurity-pour-tout-le-monde.jpg', 'Cybersecurity for Everyone')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/cybersecurity-pour-tout-le-monde.jpg" alt="Cybersecurity for Everyone" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Cybersecurity for Everyone</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Cisco Academy</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/ethical-hacking.jpg', 'Ethical Hacking Essentials')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/ethical-hacking.jpg" alt="Ethical Hacking Essentials" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Ethical Hacking Essentials</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">EC-Council</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/bash-linux.jpg', 'Linux Essentials')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/bash-linux.jpg" alt="Linux Essentials" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Linux Essentials</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">LPI Foundation</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/google-cybersecurity.jpg', 'Google Cybersecurity')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/google-cybersecurity.jpg" alt="Google Cybersecurity" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Google Cybersecurity</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Google</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/nmap.jpg', 'Nmap Network Scanning')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/nmap.jpg" alt="Nmap Network Scanning" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Nmap Network Scanning</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Network Security</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/metasploit.jpg', 'Metasploit Framework')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/metasploit.jpg" alt="Metasploit Framework" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Metasploit Framework</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Penetration Testing</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/wireshark-pour-debutant.jpg', 'Wireshark Analysis')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/wireshark-pour-debutant.jpg" alt="Wireshark for Beginners" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Wireshark Analysis</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Network Analysis</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/network-security.jpg', 'Network Security')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/network-security.jpg" alt="Network Security" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Network Security</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Cyber Defense</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/commandes-linux-base.jpg', 'Linux Basic Commands')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/commandes-linux-base.jpg" alt="Linux Basic Commands" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Linux Basic Commands</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Linux Administration</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/commandes-linux-avancees.jpg', 'Advanced Linux Commands')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/commandes-linux-avancees.jpg" alt="Advanced Linux Commands" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Advanced Linux</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Linux Administration</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/python-intro.jpg', 'Python Introduction')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/python-intro.jpg" alt="Python Introduction" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Python Introduction</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Programming</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/SQL.jpg', 'SQL Database')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/SQL.jpg" alt="SQL Database" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">SQL Database</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Database Management</p>
+                </div>
+                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/cybercriminalite.jpg', 'Cybercriminalité')">
+                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/cybercriminalite.jpg" alt="Cybercriminalité" />
+                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Cybercriminalité</h4>
+                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Digital Forensics</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section px-4 sm:px-6 py-16 md:py-24 bg-surface-container-highest/20" id="contact">
+            <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed mb-3 sm:mb-4">ÉTABLIR_UNE_CONNEXION</h2>
+                    <p class="text-on-surface-variant text-base sm:text-lg mb-8 md:mb-12">Prêt pour de nouveaux défis technologiques.</p>
+                    <div class="space-y-6">
+                        <a class="flex items-center gap-4 group" href="mailto:kseverin189@gmail.com">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase text-on-surface-variant">EMAIL</p>
+                                <p class="font-bold">kseverin189@gmail.com</p>
+                            </div>
+                        </a>
+                        <a class="flex items-center gap-4 group" href="tel:+224610305071">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
+                                <span class="material-symbols-outlined">call</span>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase text-on-surface-variant">TÉLÉPHONE</p>
+                                <p class="font-bold">+224 610 30 50 71</p>
+                            </div>
+                        </a>
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase text-on-surface-variant">LOCATION</p>
+                                <p class="font-bold">Wanindara, Conakry, Guinée</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-5 sm:p-8 rounded-2xl relative">
+                    <div class="scanline-effect opacity-30"></div>
+                    <form class="space-y-6" id="contact-form" novalidate>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="user_name">NOM_ENTRÉE</label>
+                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Votre Nom" type="text" id="user_name" name="user_name" required />
+                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="user_email">EMAIL_ENTRÉE</label>
+                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="email@adresse.com" type="email" id="user_email" name="user_email" required />
+                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="subject">SUJET</label>
+                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Objet de votre message" type="text" id="subject" name="subject" required />
+                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="message">MESSAGE</label>
+                            <textarea class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Comment puis-je vous aider ?" rows="4" id="message" name="message" required></textarea>
+                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
+                        </div>
+                        <button class="w-full py-4 bg-secondary-container text-on-secondary-container font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 active-glow disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100" type="submit" id="submit-btn">
+                            <span class="material-symbols-outlined" id="submit-icon">send</span> <span id="submit-label">ENVOYER_MESSAGE</span>
+                        </button>
+                        <p id="form-status" class="text-sm font-mono px-1 min-h-[1.25rem]" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-white/5 w-full py-8 md:py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 max-w-container-max mx-auto gap-6 md:gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+                    <svg class="w-6 h-6 shrink-0" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#00D9FF" stroke-width="1.6" />
+                        <path d="M20 12 L27 15.5 V22 C27 26 24 28.5 20 30 C16 28.5 13 26 13 22 V15.5 Z" fill="rgba(0,217,255,0.12)" stroke="#00D9FF" stroke-width="1.4" />
+                        <path d="M17 20.5 L19.3 22.8 L23.5 18.2" fill="none" stroke="#00D9FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div class="text-secondary-fixed font-bold text-xl">S.C. KOLIE</div>
+                </div>
+                <p class="font-mono text-[10px] text-on-surface-variant opacity-60">© <span id="year"></span> S.C. KOLIE</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-center md:text-left">
+                <a class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant hover:text-secondary-fixed transition-colors text-sm" href="mailto:kseverin189@gmail.com">
+                    <span class="material-symbols-outlined text-base">mail</span> kseverin189@gmail.com
+                </a>
+                <a class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant hover:text-secondary-fixed transition-colors text-sm" href="tel:+224610305071">
+                    <span class="material-symbols-outlined text-base">call</span> +224 610 30 50 71
+                </a>
+                <div class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant text-sm">
+                    <span class="material-symbols-outlined text-base">location_on</span> Wanindara, Conakry, Guinée
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
