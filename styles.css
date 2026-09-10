@@ -94,6 +94,12 @@ html, body {
     animation: glitch-anim-2 2s infinite linear alternate-reverse;
 }
 
+/* Remove colored overlay / nuance on hero title: keep single-layer text */
+.glitch-text::before,
+.glitch-text::after {
+    display: none !important;
+}
+
 @keyframes glitch-anim {
     0% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
     20% { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); }
@@ -241,11 +247,38 @@ html, body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
 }
 
 @media (max-width: 640px) {
     .profile-photo-frame {
         box-shadow: 0 0 0 2px rgba(174, 236, 255, 0.14), 0 0 18px rgba(0, 217, 255, 0.08);
     }
+}
+
+/* Hero-specific adjustments */
+.hero-content {
+    width: 100%;
+    padding: 8px 0;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    line-height: 1.02;
+}
+
+@media (min-width: 768px) {
+    .hero-content { align-items: flex-start; }
+    .hero-right { padding-left: 1rem; }
 }
