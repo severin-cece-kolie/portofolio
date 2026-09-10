@@ -1,22 +1,3 @@
-/**
- * S.C. KOLIE Portfolio - Unified Technical Engine
- * Architecture: Cyber-Premium
- */
-
-// --- EMAIL CONFIGURATION (contact form) -----------------------------------
-// This site is a static frontend (no server/build step), so the contact
-// form sends messages using EmailJS (https://www.emailjs.com — free tier
-// available). To activate it:
-//   1. Create an EmailJS account and an Email Service connected to
-//      kseverin189@gmail.com.
-//   2. Create an Email Template with variables: user_name, user_email,
-//      subject, message.
-//   3. Copy your Public Key, Service ID and Template ID below.
-// Note: EmailJS's "Public Key" is designed to be used in client-side code
-// (like a payment provider's "publishable key") — it is not a secret.
-// Actual sending is restricted on EmailJS's side to the allowed
-// origins/domains configured in your EmailJS account, so no private
-// credential is ever exposed in this file.
 const EMAILJS_CONFIG = {
     PUBLIC_KEY: "0otH246Dum7oO7ohI",
     SERVICE_ID: "service_5mlw0ia",
