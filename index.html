@@ -1,628 +1,992 @@
 <!DOCTYPE html>
-<html class="dark" lang="fr">
+<html class="scroll-smooth" lang="fr">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="SÉVERIN CÉCÉ KOLIÉ — Junior Cybersécurité & Administration Systèmes | Support IT. Portfolio technique." />
-    <meta name="keywords" content="Cybersécurité, Administration Systèmes, Support IT, Réseau, Linux, Windows Server, Active Directory, SÉVERIN CÉCÉ KOLIÉ, Portfolio Tech" />
+    <meta name="description" content="Portfolio de Sévérin Cécé KOLIE | Junior Cybersécurité, Administration Système & Réseaux, DevSecOps. Détection, pentest offensif et hardening d'infrastructures." />
+    <title>Sévérin Cécé KOLIE | Ingénieur Cybersécurité &amp; DevSecOps</title>
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="SÉVERIN CÉCÉ KOLIÉ | Junior Cybersécurité & Administration Systèmes" />
-    <meta property="og:description" content="Découvrez mon univers technique : Cybersécurité, Administration Systèmes, Support IT et projets pratiques." />
-    <meta property="og:image" content="images/og-preview.jpg" />
-    <meta property="og:type" content="website" />
-
-    <title>S.C. KOLIE | Junior Cybersécurité & Administration Systèmes</title>
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="alternate icon" href="favicon.svg" />
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css">
-    
-    <script id="tailwind-config">
+
+    <!-- Fonts: JetBrains Mono & Inter -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet" />
+
+    <!-- Tailored Tailwind Config -->
+    <script>
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "secondary-fixed": "#aeecff",
-                        "on-secondary-container": "#005b6c",
-                        "outline-variant": "#44474d",
-                        "on-surface": "#d4e4fa",
-                        "on-error-container": "#ffdad6",
-                        "outline": "#8f9097",
-                        "surface-container": "#122131",
-                        "tertiary-fixed": "#dce2f7",
-                        "on-tertiary-fixed": "#141b2b",
-                        "surface-container-lowest": "#010f1f",
-                        "surface-variant": "#273647",
-                        "surface": "#051424",
-                        "primary-fixed": "#d6e3ff",
-                        "on-secondary-fixed": "#001f26",
-                        "surface-container-low": "#0d1c2d",
-                        "surface-container-highest": "#273647",
-                        "on-primary-fixed-variant": "#39475f",
-                        "inverse-on-surface": "#233143",
-                        "background": "#051424",
-                        "on-error": "#690005",
-                        "on-surface-variant": "#c5c6cd",
-                        "tertiary": "#c0c6db",
-                        "on-secondary": "#003641",
-                        "on-primary-container": "#74829d",
-                        "surface-container-high": "#1c2b3c",
-                        "error-container": "#93000a",
-                        "tertiary-container": "#121928",
-                        "on-tertiary-fixed-variant": "#404758",
-                        "surface-bright": "#2c3a4c",
-                        "secondary-fixed-dim": "#00d9ff",
-                        "inverse-surface": "#d4e4fa",
-                        "secondary": "#aeecff",
-                        "primary-fixed-dim": "#b9c7e4",
-                        "on-background": "#d4e4fa",
-                        "surface-dim": "#051424",
-                        "on-primary-fixed": "#0d1c32",
-                        "secondary-container": "#00d9ff",
-                        "on-secondary-fixed-variant": "#004e5d",
-                        "surface-tint": "#b9c7e4",
-                        "error": "#ffb4ab",
-                        "on-primary": "#233148",
-                        "on-tertiary-container": "#7b8295",
-                        "primary": "#b9c7e4",
-                        "inverse-primary": "#515f78",
-                        "primary-container": "#0a192f",
-                        "on-tertiary": "#293040",
-                        "tertiary-fixed-dim": "#c0c6db"
+                    colors: {
+                        cyberDark: '#030712',
+                        cyberDeep: '#050b14',
+                        cyberCard: '#090f19',
+                        cyberBorder: '#142334',
+                        neonGreen: '#00ff66',
+                        neonCyan: '#00d9ff',
+                        neonEmerald: '#10b981',
+                        terminalBg: '#070d18'
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
                     },
-                    "spacing": {
-                        "stack-gap": "16px",
-                        "unit": "4px",
-                        "container-max": "1200px",
-                        "gutter": "24px",
-                        "margin-safe": "32px"
+                    boxShadow: {
+                        'neon-glow': '0 0 25px rgba(0, 255, 102, 0.35)',
+                        'cyan-glow': '0 0 25px rgba(0, 217, 255, 0.35)',
+                        'terminal': '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 1px 1px rgba(0, 255, 102, 0.18)',
                     }
                 }
             }
         }
     </script>
+
+    <!-- Production Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-hidden cyber-theme">
-    <!-- Global Background Shader ANIMATION_2 -->
-    <div class="fixed inset-0 w-full h-full -z-20 opacity-40">
-        <canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%"></canvas>
-    </div>
-    <div class="fixed inset-0 cyber-grid -z-10 pointer-events-none"></div>
+<body class="bg-cyberDark selection:bg-neonGreen selection:text-black">
 
-    <!-- Intro Splash Screen -->
-    <div id="splash-screen" class="splash-screen fixed inset-0 z-[10000] bg-background flex flex-col items-center justify-center p-6 sm:p-gutter text-center">
-        <div class="w-full max-w-md space-y-4" id="loading-sequence">
-             <div class="soc-header flex justify-between font-mono text-[10px] sm:text-xs text-secondary-fixed mb-6 sm:mb-8">
-                <span class="flicker-text">INITIALISATION_DU_SYSTÈME...</span>
-                <span id="loading-percent">00%</span>
+<!-- ========================================================================
+     HEADER & MAIN NAVIGATION
+     ======================================================================== -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#050c14]/90 backdrop-blur-md border-b border-cyberBorder/60 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <!-- Brand Tag Logo -->
+        <a class="font-mono text-base font-semibold tracking-tight text-white hover:text-neonGreen transition-colors flex items-center group" href="#">
+            <span class="text-neonCyan">&lt;</span><span class="text-neonGreen group-hover:text-white transition-colors">severin-cece-kolie</span><span class="text-neonCyan">/&gt;</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center space-x-6 font-mono text-xs">
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#about"><span class="text-neonGreen/60">./</span>A Propos</a>
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#experience"><span class="text-neonGreen/60">./</span>Experiences</a>
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#projects"><span class="text-neonGreen/60">./</span>Projets</a>
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#skills"><span class="text-neonGreen/60">./</span>Compétences</a>
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#certs"><span class="text-neonGreen/60">./</span>Certifications</a>
+            <a class="text-gray-400 hover:text-neonGreen transition-colors" href="#contact"><span class="text-neonGreen/60">./</span>Contact</a>
+        </nav>
+
+        <!-- Header Actions: CV Button & Mobile Menu Toggle -->
+        <div class="flex items-center space-x-3">
+            <a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded border border-neonGreen/80 text-neonGreen font-mono text-xs hover:bg-neonGreen hover:text-black font-semibold shadow-[0_0_12px_rgba(0,255,102,0.2)] transition-all" href="cv/Severin_Cece_Kolie_cv.pdf" target="_blank" rel="noopener noreferrer">
+                <span>↓</span> <span>CV</span>
+            </a>
+            <button id="mobile-menu-toggle" type="button" class="lg:hidden p-2 text-gray-300 hover:text-neonGreen focus:outline-none" aria-label="Ouvrir le menu de navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Navigation Drawer & Overlay -->
+<div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
+<aside id="mobile-drawer" class="mobile-drawer">
+    <div class="flex items-center justify-between pb-6 border-b border-cyberBorder/80">
+        <span class="font-mono text-xs text-neonGreen font-semibold">// NAVIGATION_MENU</span>
+        <button id="mobile-menu-close" type="button" class="p-1.5 text-gray-400 hover:text-white rounded hover:bg-cyberBorder/50 transition-colors" aria-label="Fermer le menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <nav class="flex flex-col space-y-4 font-mono text-sm py-8">
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#about"><span class="text-neonGreen/60">01.</span> À Propos</a>
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#experience"><span class="text-neonGreen/60">02.</span> Expériences &amp; Formation</a>
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#projects"><span class="text-neonGreen/60">03.</span> Projets</a>
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#skills"><span class="text-neonGreen/60">04.</span> Compétences</a>
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#certs"><span class="text-neonGreen/60">05.</span> Certifications</a>
+        <a class="mobile-nav-link text-gray-300 hover:text-neonGreen transition-colors flex items-center gap-2" href="#contact"><span class="text-neonGreen/60">06.</span> Contact</a>
+    </nav>
+    <div class="mt-auto pt-6 border-t border-cyberBorder/80">
+        <a class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-neonGreen text-black font-mono text-xs font-semibold hover:bg-[#00e65c] shadow-[0_0_15px_rgba(0,255,102,0.3)] transition-all" href="cv/Severin_Cece_Kolie_cv.pdf" target="_blank" rel="noopener noreferrer">
+            <span>↓</span> <span>TÉLÉCHARGER LE CV (PDF)</span>
+        </a>
+    </div>
+</aside>
+
+<!-- ========================================================================
+     HERO SECTION
+     ======================================================================== -->
+<section id="hero" class="relative min-h-screen pt-28 pb-32 flex flex-col items-center justify-center overflow-hidden border-b border-cyberBorder/40">
+    <!-- Perspective 3D Grid Canvas -->
+    <div class="cyber-grid-canvas"></div>
+
+    <!-- Ambient Glow Orbs -->
+    <div class="absolute top-1/4 left-1/4 w-[450px] h-[450px] bg-neonGreen/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-neonCyan/10 rounded-full blur-[110px] pointer-events-none"></div>
+
+    <!-- Subtle Animated Technical Data Stream / Ambient Text around terminal -->
+    <div class="cyber-stream-track">
+        <div class="cyber-stream-tag tag-green top-28 left-8" style="animation-delay: 0s;">[SECOPS] NETSTAT -tulpn</div>
+        <div class="cyber-stream-tag tag-gray top-36 left-48" style="animation-delay: 3s;">0x7FFE0000_PAGE_FAULT</div>
+        <div class="cyber-stream-tag tag-cyan top-52 left-20" style="animation-delay: 6s;">[AUTH] winrm -u admin</div>
+        <div class="cyber-stream-tag tag-cyan top-32 right-32" style="animation-delay: 2s;">[DIR] LDAP://DC01:389</div>
+        <div class="cyber-stream-tag tag-green top-52 right-40" style="animation-delay: 8s;">[SCAN] sudo nmap -sV -sC</div>
+        <div class="cyber-stream-tag tag-gray top-72 right-16" style="animation-delay: 4s;">/etc/security/limits.conf</div>
+        <div class="cyber-stream-tag tag-green bottom-44 right-56" style="animation-delay: 11s;">[GPO] EnforcePasswordComplexity</div>
+        <div class="cyber-stream-tag tag-cyan bottom-32 right-28" style="animation-delay: 7s;">Active Directory / Kerberos</div>
+        <div class="cyber-stream-tag tag-green bottom-56 left-32" style="animation-delay: 9s;">[TCP/IP] SYN_SENT 10.0.0.1:445</div>
+        <div class="cyber-stream-tag tag-gray bottom-40 left-1/4" style="animation-delay: 13s;">[OS] Linux Hardening &amp; Windows Server</div>
+        <div class="cyber-stream-tag tag-amber bottom-24 right-1/3" style="animation-delay: 5s;">[SIEM] Wazuh-Agent::Active</div>
+    </div>
+
+    <!-- Terminal Window Container (Stable Height Container) -->
+    <div class="relative z-10 w-full max-w-2xl mx-auto px-4 mt-4">
+        <div class="bg-terminalBg/95 border border-neonGreen/30 rounded-lg shadow-terminal overflow-hidden backdrop-blur-xl">
+            <!-- macOS Terminal Header -->
+            <div class="bg-[#0b131e] px-4 py-2.5 border-b border-cyberBorder flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block shadow-[0_0_6px_rgba(255,95,86,0.5)]"></span>
+                    <span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block shadow-[0_0_6px_rgba(255,189,46,0.5)]"></span>
+                    <span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block shadow-[0_0_6px_rgba(39,201,63,0.5)]"></span>
+                </div>
+                <div class="font-mono text-xs text-gray-400 tracking-wide select-none">kolie@secops:~ — bash</div>
+                <div class="w-8"></div>
             </div>
-            <div class="loading-items-container text-left space-y-2">
-                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
-                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
-                    <span class="font-mono text-xs">Analyse de l'infrastructure terminée</span>
-                </div>
-                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
-                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
-                    <span class="font-mono text-xs">Contrôle du pare-feu validé</span>
-                </div>
-                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
-                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
-                    <span class="font-mono text-xs">Politiques de sécurité chargées</span>
-                </div>
-                <div class="loading-item flex items-center gap-2 opacity-0 transform translate-y-2 transition-all">
-                    <span class="material-symbols-outlined text-secondary-fixed text-sm">check_circle</span>
-                    <span class="font-mono text-xs">Vérification d'identité en cours...</span>
-                </div>
+
+            <!-- Terminal Body Content (Dynamic Typing Target with guaranteed min-height) -->
+            <div id="hero-terminal-body" class="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed space-y-3 min-h-[290px] sm:min-h-[240px] flex flex-col justify-start overflow-hidden">
+                <!-- Injected progressively by script.js with seamless cyclic looping -->
+                <noscript>
+                    <div class="space-y-2">
+                        <div class="text-neonGreen font-semibold">kolie@secops:~$ cat profile.txt</div>
+                        <p class="text-neonCyan font-semibold">> Sévérin Cécé KOLIE</p>
+                        <p class="text-white font-medium">> Junior Cybersécurité &amp; Administration système, réseaux</p>
+                        <p class="text-neonGreen">> Focus : Pentest Windows &amp; Linux server offensive sécurité</p>
+                        <p class="text-gray-300">> Spécialité : Active Directory, GPO, Hardening, Virtualisation &amp; Réseaux</p>
+                        <div class="text-neonGreen font-semibold">kolie@secops:~$</div>
+                    </div>
+                </noscript>
             </div>
-            <div class="auth-message hidden mt-8 text-secondary-fixed font-bold tracking-widest animate-pulse flex items-center justify-center gap-2" id="auth-success">
-                <span class="material-symbols-outlined">check_circle</span> ACCÈS AUTORISÉ
-            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4 font-mono text-xs sm:text-sm">
+            <a class="px-5 py-2.5 rounded border border-cyberBorder bg-[#09121d]/80 text-gray-300 hover:border-neonGreen hover:text-white transition-all flex items-center gap-2 group" href="#projects">
+                <span>Explorer Les Projets</span>
+                <span class="text-neonGreen group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+            <a class="px-6 py-2.5 rounded bg-neonGreen text-black font-semibold hover:bg-[#00e65c] shadow-[0_0_20px_rgba(0,255,102,0.4)] transition-all flex items-center gap-2" href="cv/Severin_Cece_Kolie_cv.pdf" target="_blank" rel="noopener noreferrer">
+                <span>↗</span>
+                <span>Voir Résumé</span>
+            </a>
+            <a class="px-5 py-2.5 rounded border border-cyberBorder bg-[#09121d]/80 text-gray-300 hover:border-neonGreen hover:text-white transition-all" href="#contact">
+                Prendre contact
+            </a>
         </div>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
-    <div class="fixed inset-0 z-[60] transform -translate-x-full transition-transform duration-300 md:hidden" id="drawer">
-        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleDrawer()"></div>
-        <aside class="w-[85vw] max-w-80 flex flex-col bg-surface-container rounded-r-xl h-full border-r border-white/10 shadow-2xl relative z-10">
-            <div class="p-5 sm:p-6 border-b border-white/5 flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-full overflow-hidden border border-secondary-fixed">
-                        <img class="w-full h-full object-cover" src="images/profile-photo.jpg" alt="Sévérin Cécé KOLIE" />
-                    </div>
-                    <div>
-                        <h3 class="text-secondary-fixed font-bold text-lg">S.C. KOLIE</h3>
-                        <p class="text-on-surface-variant text-[10px] uppercase tracking-wider">Junior Cybersécurité &amp; Admin. Systèmes</p>
-                    </div>
-                </div>
-                <div class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-mono text-secondary-fixed self-start">SYSTÈME_ACTIF</div>
-            </div>
-            <nav class="flex-1 py-4 flex flex-col gap-1">
-                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#hero" onclick="toggleDrawer()">
-                    <span class="material-symbols-outlined">terminal</span> Terminal
-                </a>
-                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#projects" onclick="toggleDrawer()">
-                    <span class="material-symbols-outlined">code</span> Projects
-                </a>
-                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#skills" onclick="toggleDrawer()">
-                    <span class="material-symbols-outlined">security</span> SecOps
-                </a>
-                <a class="text-on-surface-variant mx-2 hover:bg-surface-variant flex items-center gap-4 px-4 py-3 rounded-lg transition-all" href="#contact" onclick="toggleDrawer()">
-                    <span class="material-symbols-outlined">mail</span> Contact
-                </a>
-            </nav>
-        </aside>
+    <!-- Scroll Down Indicator -->
+    <div class="mt-14 flex flex-col items-center justify-center space-y-1 font-mono text-[10px] text-gray-400 tracking-widest uppercase select-none">
+        <span>SCROLL</span>
+        <div class="text-neonGreen text-sm font-bold animate-bounce">∨<br/>∨</div>
+    </div>
+</section>
+
+<!-- ========================================================================
+     ABOUT ME SECTION
+     ======================================================================== -->
+<section class="py-24 max-w-6xl mx-auto px-6 relative scroll-reveal" id="about">
+    <!-- Section Title -->
+    <div class="mb-14">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 01. about_me</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">À propos de moi</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
     </div>
 
-    <!-- Top App Bar -->
-    <header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
-        <div class="flex justify-between items-center px-4 py-3 sm:px-6 sm:py-4 max-w-container-max mx-auto">
-            <div class="flex items-center gap-2 sm:gap-3">
-                <button class="md:hidden text-secondary-fixed active:scale-95 transition-transform p-1 -ml-1" onclick="toggleDrawer()" aria-label="Ouvrir le menu">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-                <a href="#hero" class="flex items-center gap-2 sm:gap-2.5 group">
-                    <svg class="w-7 h-7 sm:w-8 sm:h-8 shrink-0" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#00D9FF" stroke-width="1.6" />
-                        <path d="M20 12 L27 15.5 V22 C27 26 24 28.5 20 30 C16 28.5 13 26 13 22 V15.5 Z" fill="rgba(0,217,255,0.12)" stroke="#00D9FF" stroke-width="1.4" />
-                        <path d="M17 20.5 L19.3 22.8 L23.5 18.2" fill="none" stroke="#00D9FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <div class="text-lg sm:text-xl font-bold text-secondary-fixed tracking-tight group-hover:opacity-80 transition-opacity">S.C. KOLIE</div>
-                </a>
+    <!-- Content 2 Columns (Narrative Left, Profile Preview & Metrics Right) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <!-- Left Narrative Column -->
+        <div class="lg:col-span-7 space-y-6 text-gray-300 leading-relaxed text-sm sm:text-base font-normal">
+            <p>
+                Titulaire d'une <span class="text-neonCyan font-medium">Licence en Mathématiques-Informatique</span>, passionné par <span class="text-neonCyan font-medium">l'administration système</span> et la <span class="text-neonCyan font-medium">cybersécurité</span>. Je possède une solide expérience en administration de systèmes (<span class="text-neonCyan font-medium">Windows Server</span>, <span class="text-neonCyan font-medium">Active Directory</span>, <span class="text-neonCyan font-medium">GPO</span>) ainsi que des bases solides en <span class="text-neonCyan font-medium">programmation</span>, <span class="text-neonCyan font-medium">bases de données</span> et <span class="text-neonCyan font-medium">réseaux</span>, avec un intérêt particulier pour la <span class="text-neonCyan font-medium">sécurité informatique</span>.
+            </p>
+            <p>
+                Curieux, rigoureux et très motivé, je développe continuellement mes compétences à travers des <span class="text-neonCyan font-medium">plateformes d'apprentissage en ligne</span> et la mise en pratique dans des <span class="text-neonCyan font-medium">environnements techniques réels</span>. Je souhaite évoluer dans des environnements techniques variés où je peux appliquer mes compétences, continuer à apprendre et contribuer efficacement au sein d'une équipe dynamique.
+            </p>
+            <p>
+                Mon profil associe <span class="text-neonCyan font-medium">l'administration système</span>, la <span class="text-neonCyan font-medium">sécurité des infrastructures</span>, la résolution de problèmes réseau, le <span class="text-neonCyan font-medium">hardening Windows/Linux</span> et les <span class="text-neonCyan font-medium">bonnes pratiques de cybersécurité</span> au service de missions techniques fiables et durables.
+            </p>
+
+            <!-- Language and Focus Pills -->
+            <div class="pt-4 flex flex-wrap gap-2.5 font-mono text-xs">
+                <span class="px-3 py-1.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Français – Natif</span>
+                <span class="px-3 py-1.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Anglais – Intermédiaire</span>
+                <span class="px-3 py-1.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">SecOps Ready</span>
+                <span class="px-3 py-1.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Infrastructure &amp; Sécurité</span>
             </div>
-            <nav class="hidden md:flex gap-8">
-                <a class="text-secondary-fixed font-bold border-b-2 border-secondary-fixed transition-colors" href="#hero">Terminal</a>
-                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#projects">Projects</a>
-                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#skills">SecOps</a>
-                <a class="text-on-surface-variant font-medium hover:text-secondary-fixed transition-colors" href="#contact">Contact</a>
-            </nav>
         </div>
-    </header>
 
-    <main id="main-content" class="pt-20 opacity-0 transition-opacity duration-1000">
-        <!-- Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20 overflow-hidden" id="hero">
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-                <div id="threejs-container-ANIMATION_3" class="w-full h-full max-w-[380px] sm:max-w-[600px] md:max-w-[800px] max-h-[380px] sm:max-h-[600px] md:max-h-[800px] opacity-60"></div>
+        <!-- Right Column: Avatar, whoami.sh Terminal Card & Metrics -->
+        <div class="lg:col-span-5 flex flex-col items-center space-y-6 w-full">
+            <!-- Circular Avatar with Cyber Glow -->
+            <div class="profile-avatar-wrapper">
+                <img alt="Sévérin Cécé KOLIE" class="profile-avatar-img" src="images/profile-photo.jpg" />
             </div>
-            <div class="relative z-10 w-full max-w-6xl hero-content flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-                <!-- Left: Photo / Badge (primary focal point) -->
-                <div class="hero-left flex-shrink-0 flex flex-col items-center md:items-start">
-                    <div class="profile-photo-frame w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full border-4 border-secondary-fixed/30 p-1 mb-4 md:mb-6">
-                        <img class="w-full h-full object-cover rounded-full" src="images/profile-photo.jpg" alt="Sévérin Cécé KOLIE" />
-                    </div>
-                    <div class="inline-block px-3 py-1 bg-secondary-container/20 border border-secondary-fixed/30 rounded-full mt-2 md:mt-4">
-                        <span class="text-secondary-fixed font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em]">Cybersécurité | Administration Systèmes | Support IT</span>
-                    </div>
+
+            <!-- whoami.sh Terminal Card -->
+            <div class="w-full bg-[#080e18] border border-cyberBorder rounded-lg shadow-terminal overflow-hidden">
+                <div class="bg-[#0c1522] px-4 py-2.5 border-b border-cyberBorder flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                    <span class="font-mono text-xs text-gray-400 ml-2">whoami.sh</span>
                 </div>
-
-                <!-- Right: Title / Terminal / CTAs -->
-                <div class="hero-right flex-1 text-center md:text-left flex flex-col items-center md:items-start gap-4">
-                    <h1 class="hero-title font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-0 tracking-tight text-on-surface glitch-text" data-text="JUNIOR CYBERSÉCURITÉ & ADMINISTRATION SYSTÈMES">
-                        JUNIOR CYBERSÉCURITÉ &amp; <br />
-                        <span class="text-secondary-fixed drop-shadow-[0_0_15px_rgba(0,217,255,0.3)]">ADMINISTRATION SYSTÈMES</span>
-                    </h1>
-
-                    <div class="w-full max-w-full md:max-w-lg glass-card rounded-xl overflow-hidden mb-2 shadow-2xl">
-                        <div class="bg-white/5 px-4 py-2 flex items-center justify-between">
-                            <div class="terminal-dots flex gap-1.5">
-                                <span class="w-2 h-2 rounded-full bg-red-500/70"></span>
-                                <span class="w-2 h-2 rounded-full bg-yellow-500/70"></span>
-                                <span class="w-2 h-2 rounded-full bg-green-500/70"></span>
-                            </div>
-                            <div class="text-[10px] font-mono text-on-surface-variant">bash — 80x24</div>
-                        </div>
-                        <div class="p-4 text-left font-mono text-sm text-secondary-fixed min-h-[120px]">
-                            <div class="flex gap-2">
-                                <span class="text-on-surface-variant">$</span>
-                                <span id="typing-text"></span><span class="animate-pulse">_</span>
-                            </div>
-                        </div>
+                <div class="p-5 font-mono text-xs space-y-3">
+                    <div class="grid grid-cols-12 gap-2">
+                        <span class="col-span-3 text-neonCyan font-medium">nom</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <span class="col-span-8 text-gray-200">Sévérin Cécé KOLIE</span>
                     </div>
-
-                    <div class="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 w-full sm:w-auto mt-2">
-                        <a class="bg-secondary-container text-on-secondary-fixed font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:scale-105 transition-transform active:scale-95 active-glow shadow-lg shadow-secondary-container/20" href="#contact">
-                            <span class="material-symbols-outlined">mail</span> Contact Moi
-                        </a>
-                        <a class="border border-secondary-fixed/50 text-secondary-fixed font-bold px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-secondary-fixed/10 transition-all active:scale-95" href="#projects">
-                            <span class="material-symbols-outlined">terminal</span> View Projects
-                        </a>
+                    <div class="grid grid-cols-12 gap-2">
+                        <span class="col-span-3 text-neonCyan font-medium">role</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <span class="col-span-8 text-gray-200">Junior Cybersécurité &amp; Admin Système</span>
+                    </div>
+                    <div class="grid grid-cols-12 gap-2">
+                        <span class="col-span-3 text-neonCyan font-medium">focus</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <span class="col-span-8 text-gray-300">Pentest Windows &amp; Linux / Hardening</span>
+                    </div>
+                    <div class="grid grid-cols-12 gap-2">
+                        <span class="col-span-3 text-neonCyan font-medium">position</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <span class="col-span-8 text-gray-300">Conakry / Wanindara Ratoma</span>
+                    </div>
+                    <div class="grid grid-cols-12 gap-2">
+                        <span class="col-span-3 text-neonCyan font-medium">email</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <a class="col-span-8 text-neonGreen hover:underline truncate" href="mailto:kseverin189@gmail.com">kseverin189@gmail.com</a>
+                    </div>
+                    <div class="grid grid-cols-12 gap-2 pt-2 border-t border-cyberBorder/70">
+                        <span class="col-span-3 text-neonCyan font-medium">status</span>
+                        <span class="col-span-1 text-gray-500">:</span>
+                        <span class="col-span-8 text-neonGreen flex items-center gap-1 font-medium">
+                            <span>✓</span> Disponible pour opportunités &amp; missions
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-                <span class="material-symbols-outlined text-secondary-fixed/50">expand_more</span>
-            </div>
-        </section>
 
-        <!-- About Section -->
-        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="about">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
-                <div class="space-y-6 md:space-y-8">
-                    <div>
-                        <h2 class="text-3xl font-bold text-secondary-fixed mb-2">À_PROPOS_DE_MOI</h2>
-                        <div class="h-1 w-20 bg-secondary-fixed rounded-full"></div>
+            <!-- 3 Metrics Cards -->
+            <div class="grid grid-cols-3 gap-3 w-full font-mono">
+                <div class="bg-[#080e18] border border-cyberBorder rounded p-3 text-center hover:border-neonGreen/50 transition-colors shadow-sm">
+                    <div class="text-xl font-bold text-neonGreen">13</div>
+                    <div class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">CERTIFICATIONS</div>
+                </div>
+                <div class="bg-[#080e18] border border-cyberBorder rounded p-3 text-center hover:border-neonGreen/50 transition-colors shadow-sm">
+                    <div class="text-xl font-bold text-neonGreen">2+</div>
+                    <div class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">STAGES</div>
+                </div>
+                <div class="bg-[#080e18] border border-cyberBorder rounded p-3 text-center hover:border-neonGreen/50 transition-colors shadow-sm">
+                    <div class="text-xl font-bold text-neonGreen">+5</div>
+                    <div class="text-[10px] uppercase tracking-wider text-gray-400 mt-1">SECTEURS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================
+     EXPERIENCE & EDUCATION SECTION (UNIFIED VERTICAL TIMELINE)
+     ======================================================================== -->
+<section class="py-28 max-w-6xl mx-auto px-6 relative border-t border-cyberBorder/50 scroll-reveal" id="experience">
+    <!-- Section Title -->
+    <div class="mb-16">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 02. experience_education</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Expérience &amp; Formation</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
+        <p class="mt-4 text-xs font-mono text-gray-400">Progression chronologique : stages pratiques d'ingénierie et cursus universitaire d'excellence.</p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="timeline-container">
+        <!-- Continuous Spine Line -->
+        <div class="timeline-spine"></div>
+
+        <!-- 1. TULIP INDUSTRIE (Stage / Expérience) -->
+        <div class="timeline-entry timeline-left">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content-wrapper">
+                <div class="timeline-card card-green bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal">
+                    <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                            <span class="font-mono text-xs text-gray-400 ml-2">tulip_it.log</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-neonGreen/10 border border-neonGreen/40 text-neonGreen uppercase font-semibold">Stage</span>
                     </div>
-                    <p class="text-on-surface-variant text-lg leading-relaxed">
-                        Junior Cybersécurité &amp; Administration Systèmes, je m'intéresse à la sécurisation et au bon fonctionnement des infrastructures IT : administration Linux et Windows, dépannage réseau, et bonnes pratiques de cybersécurité. Curieux et méthodique, je développe mes compétences à travers des projets pratiques en administration système, en support IT et en sécurité, avec l'ambition de devenir un professionnel fiable de l'infrastructure et de la sécurité informatique.
+                    <div class="w-full h-36 overflow-hidden bg-black/40 relative flex items-center justify-center p-4 border-b border-cyberBorder/40">
+                        <img alt="TULIP INDUSTRIE" class="h-20 object-contain opacity-95 transition-transform duration-300 hover:scale-105" src="images/entreprise/logotulip.png" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-1 font-sans">Stagiaire IT — TULIP INDUSTRIE</h3>
+                        <div class="flex flex-wrap items-center justify-between text-xs text-gray-400 mb-4 pb-3 border-b border-cyberBorder gap-1 font-mono">
+                            <span>Département IT &amp; Systèmes</span>
+                            <span class="text-neonGreen font-semibold">29 juillet – aujourd’hui (En cours)</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-gray-300 leading-relaxed font-sans">
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Configuration d'un laboratoire Windows Server 2019 en environnement virtualisé.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Administration de l'infrastructure Windows Server &amp; Ubuntu server.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Gestion d'Active Directory et du cycle de vie des comptes utilisateurs.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Intégration et sécurisation des postes clients au domaine Active Directory.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Déploiement et application rigoureuse des stratégies de groupe (GPO).</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Déploiement de machines virtuelles sur VMware ESXi et virtualisation de services.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Configuration et maintenance des serveurs TrueNAS et serveur de supervision Zabbix.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Administration et sécurisation du serveur de messagerie d'entreprise.</span></li>
+                        </ul>
+                        <div class="mt-5 pt-3 border-t border-cyberBorder/60 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Windows Server 2019</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Active Directory</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">GPO</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">VMware ESXi</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Zabbix</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">TrueNAS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. UNIVERSITÉ GAMAL ABDEL NASSER (Formation Universitaire) -->
+        <div class="timeline-entry timeline-right">
+            <div class="timeline-marker marker-cyan"></div>
+            <div class="timeline-content-wrapper">
+                <div class="timeline-card card-cyan bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal">
+                    <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                            <span class="font-mono text-xs text-gray-400 ml-2">gamal_licence.log</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-neonCyan/10 border border-neonCyan/40 text-neonCyan uppercase font-semibold">Formation</span>
+                    </div>
+                    <div class="w-full h-36 overflow-hidden bg-black/40 relative flex items-center justify-center p-4 border-b border-cyberBorder/40">
+                        <img alt="Université Gamal Abdel Nasser" class="h-20 object-contain opacity-95 transition-transform duration-300 hover:scale-105" src="images/entreprise/logogamal.png" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-1 font-sans">Licence en Mathématiques - Informatique</h3>
+                        <div class="flex flex-wrap items-center justify-between text-xs text-gray-400 mb-4 pb-3 border-b border-cyberBorder gap-1 font-mono">
+                            <span>Université Gamal Abdel Nasser de Conakry</span>
+                            <span class="text-neonCyan font-semibold">2024 – 2026 (En cours)</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed font-sans mb-3">
+                            Formation universitaire fondamentale et appliquée intégrant les sciences informatiques, l'architecture des ordinateurs, les systèmes d'exploitation, l'administration réseau et la cybersécurité.
+                        </p>
+                        <ul class="space-y-2 text-xs text-gray-300 leading-relaxed font-sans">
+                            <li class="flex items-start"><span class="text-neonCyan font-mono mr-2">▸</span><span>Approfondissement en algorithmique complexe, structures de données et génie logiciel.</span></li>
+                            <li class="flex items-start"><span class="text-neonCyan font-mono mr-2">▸</span><span>Étude de l'ingénierie des systèmes d'exploitation Linux et Windows.</span></li>
+                            <li class="flex items-start"><span class="text-neonCyan font-mono mr-2">▸</span><span>Fondements de la sécurité informatique, cryptographie appliquée et modélisation de bases de données relationnelles.</span></li>
+                        </ul>
+                        <div class="mt-5 pt-3 border-t border-cyberBorder/60 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Systèmes d'Exploitation</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Algorithmique</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Réseaux TCP/IP</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Bases de Données SQL</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Sécurité Systèmes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. COMPAGNIE DES BAUXITES DE GUINÉE - CBG (Stage / Expérience) -->
+        <div class="timeline-entry timeline-left">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content-wrapper">
+                <div class="timeline-card card-green bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal">
+                    <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                            <span class="font-mono text-xs text-gray-400 ml-2">cbg_support.log</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-neonGreen/10 border border-neonGreen/40 text-neonGreen uppercase font-semibold">Stage</span>
+                    </div>
+                    <div class="w-full h-36 overflow-hidden bg-black/40 relative flex items-center justify-center p-4 border-b border-cyberBorder/40">
+                        <img alt="Compagnie des Bauxites de Guinée" class="h-20 object-contain opacity-95 transition-transform duration-300 hover:scale-105" src="images/entreprise/logocbg.png" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-1 font-sans">Stagiaire en Infrastructures IT &amp; Support</h3>
+                        <div class="flex flex-wrap items-center justify-between text-xs text-gray-400 mb-4 pb-3 border-b border-cyberBorder gap-1 font-mono">
+                            <span>Compagnie des Bauxites de Guinée (CBG)</span>
+                            <span class="text-neonGreen font-semibold">04 août – 04 septembre</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-gray-300 leading-relaxed font-sans">
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Gestion des comptes utilisateurs, incluant la création, la modification, la suppression et l'octroi des droits d'accès.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Administration, suivi rigoureux et gestion physique des supports de sauvegarde (cassettes LTO de backup).</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Vérification, inventaire et transport sécurisé des supports de données sensibles.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Participation aux opérations de sauvegarde et de restauration des données stratégiques via OneDrive Entreprise.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Déploiement et maintien en condition opérationnelle de solutions de sécurité endpoint, notamment FortiEDR.</span></li>
+                            <li class="flex items-start"><span class="text-neonGreen font-mono mr-2">▸</span><span>Support technique de niveau 1/2 et assistance sur les systèmes d'exploitation des collaborateurs.</span></li>
+                        </ul>
+                        <div class="mt-5 pt-3 border-t border-cyberBorder/60 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Active Directory</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">FortiEDR</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Sauvegarde LTO</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">OneDrive Entreprise</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Support Système</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. MOHAMED VI (Formation Secondaire) -->
+        <div class="timeline-entry timeline-right">
+            <div class="timeline-marker marker-cyan"></div>
+            <div class="timeline-content-wrapper">
+                <div class="timeline-card card-cyan bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal">
+                    <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                            <span class="font-mono text-xs text-gray-400 ml-2">mohamedvi.log</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-neonCyan/10 border border-neonCyan/40 text-neonCyan uppercase font-semibold">Formation</span>
+                    </div>
+                    <div class="w-full h-36 overflow-hidden bg-black/40 relative flex items-center justify-center p-4 border-b border-cyberBorder/40">
+                        <img alt="Lycée Mohamed VI" class="h-20 object-contain opacity-95 transition-transform duration-300 hover:scale-105" src="images/entreprise/logomohamed.png" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-base sm:text-lg font-bold text-white mb-1 font-sans">Baccalauréat — Sciences Mathématiques</h3>
+                        <div class="flex flex-wrap items-center justify-between text-xs text-gray-400 mb-4 pb-3 border-b border-cyberBorder gap-1 font-mono">
+                            <span>Lycée Mohamed VI</span>
+                            <span class="text-neonCyan font-semibold">2022 – 2023</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed font-sans mb-3">
+                            Terminale Sciences Mathématiques. Formation exigeante développant une grande rigueur analytique, l'esprit critique, la modélisation formelle et la logique de résolution de problèmes complexes.
+                        </p>
+                        <div class="mt-5 pt-3 border-t border-cyberBorder/60 flex flex-wrap gap-1.5 font-mono text-[10px]">
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Logique Mathématique</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Analyse &amp; Algèbre</span>
+                            <span class="px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Raisonnement Scientifique</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================
+     PROJECTS SECTION
+     ======================================================================== -->
+<section class="py-24 max-w-6xl mx-auto px-6 relative border-t border-cyberBorder/50 scroll-reveal" id="projects">
+    <!-- Section Title -->
+    <div class="mb-16">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 03. projets</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Projets &amp; Réalisations</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
+        <p class="mt-4 text-xs font-mono text-gray-400">Architectures sécurisées, outils système et applications résilientes développées avec rigueur.</p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Project 1: TEEBUSINESS -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonGreen/40 transition-all flex flex-col justify-between group">
+            <div>
+                <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                        <span class="font-mono text-xs text-gray-400 ml-2">teebusiness_platform.py</span>
+                    </div>
+                    <span class="font-mono text-[10px] text-neonGreen">SECURE_ECOMMERCE</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neonGreen transition-colors">TEEBUSINESS Platform</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-5">
+                        Plateforme ERP de commerce électronique et de gestion transactionnelle intégrant une architecture multi-rôles et des fonctionnalités de gestion sécurisée des produits, commandes et utilisateurs.
                     </p>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center">
-                            <span class="text-3xl font-bold text-secondary-fixed">08+</span>
-                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Certificats</span>
-                        </div>
-                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center">
-                            <span class="text-3xl font-bold text-secondary-fixed">05+</span>
-                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Projets Clés</span>
-                        </div>
-                        <div class="glass-card p-6 rounded-xl flex flex-col items-center text-center col-span-2 md:col-span-1">
-                            <span class="text-3xl font-bold text-secondary-fixed">24/7</span>
-                            <span class="text-xs uppercase mt-2 text-on-surface-variant">Surveillance</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-secondary-fixed/10 blur-3xl rounded-full"></div>
-                    <div class="glass-card p-6 sm:p-8 rounded-2xl relative overflow-hidden">
-                        <div class="scanline-effect"></div>
-                        <h3 class="font-mono text-secondary-fixed mb-4 flex items-center gap-2">
-                            <span class="material-symbols-outlined">school</span> Parcours Académique
-                        </h3>
-                        <div class="space-y-6">
-                            <div class="flex gap-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-3 h-3 rounded-full bg-secondary-fixed shadow-[0_0_10px_#00D9FF]"></div>
-                                    <div class="w-px h-full bg-white/10"></div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-on-surface">Licence — Mathématiques-Informatique</h4>
-                                    <p class="text-sm text-on-surface-variant">2023 - 2026</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-3 h-3 rounded-full bg-white/30"></div>
-                                    <div class="w-px h-full bg-white/10"></div>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-on-surface">Baccalauréat</h4>
-                                    <p class="text-sm text-on-surface-variant">2022 - 2023</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Django</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Python</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">MySQL</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">HTML/CSS</span>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="px-6 py-4 bg-[#09111c]/60 border-t border-cyberBorder flex items-center justify-between font-mono text-xs">
+                <span class="text-gray-500">Plateforme Sécurisée</span>
+                <a class="text-neonGreen hover:underline flex items-center gap-1" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer"><span>GitHub ↗</span></a>
+            </div>
+        </div>
 
-        <!-- Skills Section -->
-        <section class="section bg-surface-container-low px-4 sm:px-6 py-16 md:py-24" id="skills">
-            <div class="max-w-container-max mx-auto">
-                <div class="text-center mb-10 md:mb-16">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed">COMPÉTENCES_TECHNIQUES</h2>
-                    <p class="text-on-surface-variant mt-2 font-mono text-sm sm:text-base">Carte des compétences et outils actuels</p>
+        <!-- Project 2: Forum Cybersécurité -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonGreen/40 transition-all flex flex-col justify-between group">
+            <div>
+                <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                        <span class="font-mono text-xs text-gray-400 ml-2">cyber_intel_forum.py</span>
+                    </div>
+                    <span class="font-mono text-[10px] text-neonCyan">INTEL_FEED</span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
-                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
-                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-3xl">security</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-6">Cybersecurity</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Nmap</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Metasploit</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Wireshark</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Burp Suite</span>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
-                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-3xl">dns</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-6">Administration Systèmes</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Linux</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Windows Server</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Active Directory / GPO</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">VMware</span>
-                        </div>
-                    </div>
-                    <div class="glass-card p-6 sm:p-8 rounded-2xl group hover:border-secondary-fixed/50 transition-all">
-                        <div class="w-12 h-12 bg-secondary-fixed/10 rounded-lg flex items-center justify-center mb-6 text-secondary-fixed group-hover:scale-110 transition-transform">
-                            <span class="material-symbols-outlined text-3xl">support_agent</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-6">Support IT &amp; Réseau</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Dépannage réseau</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">VPN / SSH</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">Python/Django</span>
-                            <span class="px-3 py-1 bg-surface-variant rounded-full text-xs font-mono text-on-surface-variant">SQL</span>
-                        </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neonGreen transition-colors">Forum Cybersécurité</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-5">
+                        Plateforme collaborative pour les concours de CTF et formation en cybersécurité, des discussions thématiques et des ressources pédagogiques sécurisées.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Python</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">FastAPI</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">React</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">SQLite</span>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="px-6 py-4 bg-[#09111c]/60 border-t border-cyberBorder flex items-center justify-between font-mono text-xs">
+                <span class="text-gray-500">CTF &amp; Intel Hub</span>
+                <a class="text-neonGreen hover:underline flex items-center gap-1" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer"><span>GitHub ↗</span></a>
+            </div>
+        </div>
 
-        <!-- Projects Section -->
-        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="projects">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-4 md:gap-6">
+        <!-- Project 3: GestionPharmacie -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonGreen/40 transition-all flex flex-col justify-between group">
+            <div>
+                <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                        <span class="font-mono text-xs text-gray-400 ml-2">gestion_pharmacie.php</span>
+                    </div>
+                    <span class="font-mono text-[10px] text-amber-400">ERP_SYSTEM</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neonGreen transition-colors">GestionPharmacie</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-5">
+                        Système ERP pour la gestion de médicaments d'une pharmacie, la vente et l'approvisionnement avec un graphique de suivi dynamique du chiffre d'affaires et contrôle d'accès.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">PHP</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">MySQL</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Bootstrap</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Audit Trail</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-[#09111c]/60 border-t border-cyberBorder flex items-center justify-between font-mono text-xs">
+                <span class="text-gray-500">Internal ERP</span>
+                <a class="text-neonGreen hover:underline flex items-center gap-1" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer"><span>GitHub ↗</span></a>
+            </div>
+        </div>
+
+        <!-- Project 4: Debout-Wanindara & LesDiplomates -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonGreen/40 transition-all flex flex-col justify-between group">
+            <div>
+                <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                        <span class="font-mono text-xs text-gray-400 ml-2">web_portals.sh</span>
+                    </div>
+                    <span class="font-mono text-[10px] text-neonGreen">COMMUNITY_WEB</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-neonGreen transition-colors">Debout-Wanindara &amp; LesDiplomates</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-5">
+                        Portails web sécurisés et résilients conçus pour des organisations communautaires. Optimisés pour la performance, la gestion des utilisateurs et la protection contre les attaques web courantes.
+                    </p>
+                    <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">Full-Stack</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">JavaScript</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonCyan">MySQL</span>
+                        <span class="px-2.5 py-1 rounded bg-[#09121d] border border-cyberBorder text-neonGreen">Web Security</span>
+                    </div>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-[#09111c]/60 border-t border-cyberBorder flex items-center justify-between font-mono text-xs">
+                <span class="text-gray-500">Portail Web Sécurisé</span>
+                <a class="text-neonGreen hover:underline flex items-center gap-1" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer"><span>GitHub ↗</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Button: View More Projects on GitHub -->
+    <div class="mt-12 flex justify-center">
+        <a class="inline-flex items-center gap-2.5 px-6 py-3 rounded border border-neonGreen/80 bg-[#09121d] text-neonGreen font-mono text-xs sm:text-sm font-semibold hover:bg-neonGreen hover:text-black shadow-[0_0_15px_rgba(0,255,102,0.2)] hover:shadow-[0_0_25px_rgba(0,255,102,0.4)] transition-all group" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer">
+            <svg class="w-4 h-4 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span>Voir plus de projets sur GitHub</span>
+            <span class="text-neonGreen group-hover:text-black group-hover:translate-x-1 transition-all">↗</span>
+        </a>
+    </div>
+</section>
+
+<!-- ========================================================================
+     SKILLS SECTION
+     ======================================================================== -->
+<section class="py-24 max-w-6xl mx-auto px-6 relative border-t border-cyberBorder/50 scroll-reveal" id="skills">
+    <!-- Section Title -->
+    <div class="mb-16">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 04. skills</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Compétences techniques</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
+        <p class="mt-4 text-xs font-mono text-gray-400">Socle technique alliant défense des infrastructures, administration système et sécurité offensive.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Cybersécurité -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonGreen/40 transition-colors">
+            <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                <span class="font-mono text-xs text-neonGreen ml-2">cybersecurity.conf</span>
+            </div>
+            <div class="p-6">
+                <h4 class="font-mono text-sm text-white font-semibold mb-4 flex items-center gap-2">
+                    <span class="text-neonGreen">🛡</span> Cybersécurité
+                </h4>
+                <ul class="space-y-3 font-mono text-xs">
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Administration Windows Server</span><span class="text-neonGreen font-semibold">Actif</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Gestion des comptes &amp; AD</span><span class="text-neonGreen font-semibold">Maîtrisé</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Ligne de commande Linux</span><span class="text-neonGreen font-semibold">Pratique</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Sécurité de l'information</span><span class="text-neonGreen font-semibold">Solide</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Outils de sécurité (Nmap, Wireshark)</span><span class="text-neonGreen font-semibold">Utilisés</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Développement & programmation -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-neonCyan/40 transition-colors">
+            <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                <span class="font-mono text-xs text-neonCyan ml-2">dev_stack.json</span>
+            </div>
+            <div class="p-6">
+                <h4 class="font-mono text-sm text-white font-semibold mb-4 flex items-center gap-2">
+                    <span class="text-neonCyan">⚡</span> Développement &amp; Programmation
+                </h4>
+                <ul class="space-y-3 font-mono text-xs">
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Programmation Fondamentale</span><span class="text-neonCyan font-semibold">Solide</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Python &amp; Scripts Sécurité</span><span class="text-neonCyan font-semibold">Pratique</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">PHP &amp; Backend ERP</span><span class="text-neonCyan font-semibold">Opérationnel</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">JavaScript / DOM / API</span><span class="text-neonCyan font-semibold">Front-end</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Bases de données MySQL</span><span class="text-neonCyan font-semibold">Modélisation</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Virtualisation & réseaux -->
+        <div class="bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal hover:border-amber-400/40 transition-colors">
+            <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                <span class="font-mono text-xs text-amber-400 ml-2">sysadmin.sys</span>
+            </div>
+            <div class="p-6">
+                <h4 class="font-mono text-sm text-white font-semibold mb-4 flex items-center gap-2">
+                    <span class="text-amber-400">🖧</span> Virtualisation &amp; Réseaux
+                </h4>
+                <ul class="space-y-3 font-mono text-xs">
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">VMware Workstation</span><span class="text-amber-400 font-semibold">Lab</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">VMware ESXi</span><span class="text-amber-400 font-semibold">Serveur</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Réseaux / TCP-IP &amp; Sous-réseaux</span><span class="text-amber-400 font-semibold">Réseau</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">Active Directory (Forêt / Domaine)</span><span class="text-amber-400 font-semibold">Admin</span></li>
+                    <li class="flex items-center justify-between bg-[#080e18] p-2.5 rounded border border-cyberBorder/60"><span class="text-gray-300">GPO &amp; Sécurisation des Accès</span><span class="text-amber-400 font-semibold">Hardening</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================
+     CERTIFICATIONS & ROADMAP SECTION
+     ======================================================================== -->
+<section class="py-24 max-w-6xl mx-auto px-6 relative border-t border-cyberBorder/50 scroll-reveal" id="certs">
+    <!-- Section Title -->
+    <div class="mb-16">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 05. certifications_roadmap</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Certifications &amp; Parcours</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
+        <p class="mt-4 text-xs font-mono text-gray-400">13 certifications techniques validées dans le domaine de la cybersécurité, du pentesting et des systèmes.</p>
+    </div>
+
+    <!-- Certifications Grid (13 Items) -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-16">
+        <button type="button" onclick="openCertificationModal('images/certificates/google-cybersecurity.jpg', 'Google Cybersecurity')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Google Cybersecurity" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/google-cybersecurity.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Google Cybersecurity</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Foundations</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/cybersecurity-pour-tout-le-monde.jpg', 'Cybersecurity for Everyone')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Cybersecurity for Everyone" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/cybersecurity-pour-tout-le-monde.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Cybersecurity for Everyone</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Foundations</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/cybercriminalite.jpg', 'Cybercrime Investigation')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Cybercrime Investigation" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/cybercriminalite.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Cybercrime Investigation</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Forensics</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/ethical-hacking.jpg', 'Ethical Hacking Essentials')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Ethical Hacking Essentials" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/ethical-hacking.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Ethical Hacking Essentials</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Penetration</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/metasploit.jpg', 'Metasploit Framework')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Metasploit Framework" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/metasploit.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Metasploit Framework</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Offensive Tools</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/nmap.jpg', 'Nmap Reconnaissance')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Nmap Reconnaissance" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/nmap.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Nmap Reconnaissance</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Recon</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/network-security.jpg', 'Network Security')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Network Security" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/network-security.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Network Security</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Infrastructure</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/wireshark-pour-debutant.jpg', 'Wireshark Essentials')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Wireshark Essentials" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/wireshark-pour-debutant.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Wireshark Essentials</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Traffic Analysis</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/commandes-linux-base.jpg', 'Linux Fundamentals')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Linux Fundamentals" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/commandes-linux-base.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Linux Fundamentals</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">System Admin</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/commandes-linux-avancees.jpg', 'Linux Advanced Commands')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Linux Advanced Commands" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/commandes-linux-avancees.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Linux Advanced</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Hardening</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/bash-linux.jpg', 'Bash & Linux')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Bash & Linux" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/bash-linux.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Bash &amp; Linux</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Automation</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/python-intro.jpg', 'Python for Security')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="Python for Security" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/python-intro.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">Python for Security</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Scripting</div>
+        </button>
+
+        <button type="button" onclick="openCertificationModal('images/certificates/SQL.jpg', 'SQL Essentials')" class="bg-terminalBg border border-cyberBorder hover:border-neonGreen/50 p-2 rounded text-left transition-all overflow-hidden group focus:outline-none focus:ring-1 focus:ring-neonGreen">
+            <img alt="SQL Essentials" class="h-32 w-full object-cover rounded mb-2 border border-cyberBorder group-hover:scale-[1.02] transition-transform" src="images/certificates/SQL.jpg" />
+            <div class="font-mono text-[11px] text-white font-medium truncate">SQL Essentials</div>
+            <div class="text-[10px] text-gray-500 mt-0.5 font-mono">Databases</div>
+        </button>
+    </div>
+
+    <!-- Skill Tree Roadmap Card (Cleanly closed & fully formed) -->
+    <div class="bg-terminalBg border border-cyberBorder rounded-lg p-6 font-mono text-xs shadow-terminal">
+        <div class="flex items-center space-x-2 pb-4 mb-4 border-b border-cyberBorder text-neonGreen font-semibold">
+            <span>⚙</span>
+            <span>CYBERSECURITY SKILL TREE &amp; PIPELINE ROADMAP</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-neonGreen/30">
+                <span class="text-neonGreen font-bold">✓</span>
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed">RAPPORTS_DE_MISSIONS</h2>
-                    <p class="text-on-surface-variant mt-2 max-w-xl text-sm sm:text-base">Une sélection de mes travaux en développement et sécurité.</p>
-                </div>
-                <a class="font-mono text-secondary-fixed flex items-center gap-2 hover:underline text-sm sm:text-base" href="https://github.com/severcece">
-                    VOIR_TOUS_LES_DÉPÔTS <span class="material-symbols-outlined">arrow_forward</span>
-                </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <!-- TEEBUSINESS -->
-                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                    <div class="relative h-48 sm:h-64 overflow-hidden bg-gradient-to-br from-secondary-fixed/20 to-surface-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-6xl text-secondary-fixed/50">storefront</span>
-                        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-                        <div class="absolute bottom-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold rounded-full uppercase">Full-Stack</span>
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8">
-                        <title-group>
-                            <h3 class="text-2xl font-bold mb-3">TEEBUSINESS Platform</h3>
-                            <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Solution de gestion commerciale et e-commerce avec architecture micro-services.</p>
-                        </title-group>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Django</span>
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Python</span>
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">CSS3</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a class="flex-1 py-3 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors" href="https://github.com/severcece/TEEBUSINESS">
-                                <span class="material-symbols-outlined text-lg">code</span> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- ForumCybersecurite -->
-                <div class="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-all duration-500">
-                    <div class="relative h-48 sm:h-64 overflow-hidden bg-gradient-to-br from-red-500/20 to-surface-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-6xl text-red-400/50">security</span>
-                        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
-                        <div class="absolute bottom-4 left-4 flex gap-2">
-                            <span class="px-3 py-1 bg-red-500/20 text-red-400 text-[10px] font-bold rounded-full uppercase border border-red-500/30">Focus Sécurité</span>
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8">
-                        <h3 class="text-2xl font-bold mb-3">Forum Cybersécurité</h3>
-                        <p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Plateforme d'échange communautaire pour les experts en sécurité.</p>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">HTML5</span>
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">CSS3</span>
-                            <span class="text-[10px] font-mono text-secondary-fixed/70 px-2 py-1 border border-secondary-fixed/20 rounded">Sécurité</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a class="flex-1 py-3 bg-white/5 hover:bg-white/10 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-colors" href="https://github.com/severcece/ForumCybersecurite">
-                                <span class="material-symbols-outlined text-lg">code</span> GitHub
-                            </a>
-                        </div>
-                    </div>
+                    <div class="text-white font-medium">Windows Server</div>
+                    <div class="text-[10px] text-gray-400">Active Directory, GPO, Hardening</div>
                 </div>
             </div>
-            <!-- Extra Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-6 md:mt-8">
-                <div class="glass-card p-6 rounded-2xl flex flex-col">
-                    <h4 class="font-bold text-lg mb-2">GestionPharmacie</h4>
-                    <p class="text-xs text-on-surface-variant flex-1">Système ERP sécurisé pour la gestion de stocks médicaux.</p>
-                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-[10px] font-mono text-secondary-fixed">PHP/SQL</span>
-                        <a href="https://github.com/severcece/GestionPharmacie"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
-                    </div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col">
-                    <h4 class="font-bold text-lg mb-2">Debout-Wanindara</h4>
-                    <p class="text-xs text-on-surface-variant flex-1">Application mobile de sensibilisation citoyenne.</p>
-                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-[10px] font-mono text-secondary-fixed">PHP/JS</span>
-                        <a href="https://github.com/severcece/Debout-Wanindara"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
-                    </div>
-                </div>
-                <div class="glass-card p-6 rounded-2xl flex flex-col">
-                    <h4 class="font-bold text-lg mb-2">LesDiplomates</h4>
-                    <p class="text-xs text-on-surface-variant flex-1">Plateforme de gestion événementielle et protocolaire.</p>
-                    <div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-[10px] font-mono text-secondary-fixed">Django/Python</span>
-                        <a href="https://github.com/severcece/LesDiplomates"><span class="material-symbols-outlined text-on-surface-variant hover:text-secondary-fixed cursor-pointer text-sm">open_in_new</span></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section class="section px-4 sm:px-6 py-16 md:py-24 max-w-container-max mx-auto" id="certifications">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4 md:gap-6">
-                <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed text-center md:text-left">CERTIFICATS_VALIDÉS</h2>
-                <button onclick="toggleCertificationsView()" class="bg-secondary-container text-on-secondary-fixed font-bold px-6 py-3 rounded-full flex items-center gap-2 hover:scale-105 transition-transform active:scale-95 self-center md:self-end">
-                    <span class="material-symbols-outlined">fullscreen</span> Agrandir
-                </button>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6" id="certifications-grid">
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/cybersecurity-pour-tout-le-monde.jpg', 'Cybersecurity for Everyone')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/cybersecurity-pour-tout-le-monde.jpg" alt="Cybersecurity for Everyone" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Cybersecurity for Everyone</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Cisco Academy</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/ethical-hacking.jpg', 'Ethical Hacking Essentials')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/ethical-hacking.jpg" alt="Ethical Hacking Essentials" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Ethical Hacking Essentials</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">EC-Council</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/bash-linux.jpg', 'Linux Essentials')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/bash-linux.jpg" alt="Linux Essentials" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Linux Essentials</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">LPI Foundation</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/google-cybersecurity.jpg', 'Google Cybersecurity')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/google-cybersecurity.jpg" alt="Google Cybersecurity" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Google Cybersecurity</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Google</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/nmap.jpg', 'Nmap Network Scanning')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/nmap.jpg" alt="Nmap Network Scanning" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Nmap Network Scanning</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Network Security</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/metasploit.jpg', 'Metasploit Framework')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/metasploit.jpg" alt="Metasploit Framework" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Metasploit Framework</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Penetration Testing</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/wireshark-pour-debutant.jpg', 'Wireshark Analysis')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/wireshark-pour-debutant.jpg" alt="Wireshark for Beginners" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Wireshark Analysis</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Network Analysis</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/network-security.jpg', 'Network Security')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/network-security.jpg" alt="Network Security" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Network Security</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Cyber Defense</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/commandes-linux-base.jpg', 'Linux Basic Commands')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/commandes-linux-base.jpg" alt="Linux Basic Commands" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Linux Basic Commands</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Linux Administration</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/commandes-linux-avancees.jpg', 'Advanced Linux Commands')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/commandes-linux-avancees.jpg" alt="Advanced Linux Commands" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Advanced Linux</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Linux Administration</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/python-intro.jpg', 'Python Introduction')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/python-intro.jpg" alt="Python Introduction" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Python Introduction</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Programming</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/SQL.jpg', 'SQL Database')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/SQL.jpg" alt="SQL Database" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">SQL Database</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Database Management</p>
-                </div>
-                <div class="glass-card p-3 sm:p-6 rounded-xl text-center group hover:bg-secondary-fixed/5 transition-colors cursor-pointer" onclick="openCertificationModal('images/certificates/cybercriminalite.jpg', 'Cybercriminalité')">
-                    <img class="w-full h-20 sm:h-32 object-cover rounded-lg mb-2 sm:mb-4" src="images/certificates/cybercriminalite.jpg" alt="Cybercriminalité" />
-                    <h4 class="font-bold text-[11px] sm:text-sm mb-1 leading-tight">Cybercriminalité</h4>
-                    <p class="text-[10px] sm:text-xs text-on-surface-variant">Digital Forensics</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section px-4 sm:px-6 py-16 md:py-24 bg-surface-container-highest/20" id="contact">
-            <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-neonGreen/30">
+                <span class="text-neonGreen font-bold">✓</span>
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-secondary-fixed mb-3 sm:mb-4">ÉTABLIR_UNE_CONNEXION</h2>
-                    <p class="text-on-surface-variant text-base sm:text-lg mb-8 md:mb-12">Prêt pour de nouveaux défis technologiques.</p>
-                    <div class="space-y-6">
-                        <a class="flex items-center gap-4 group" href="mailto:kseverin189@gmail.com">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
-                                <span class="material-symbols-outlined">mail</span>
-                            </div>
-                            <div>
-                                <p class="text-xs uppercase text-on-surface-variant">EMAIL</p>
-                                <p class="font-bold">kseverin189@gmail.com</p>
-                            </div>
-                        </a>
-                        <a class="flex items-center gap-4 group" href="tel:+224610305071">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
-                                <span class="material-symbols-outlined">call</span>
-                            </div>
-                            <div>
-                                <p class="text-xs uppercase text-on-surface-variant">TÉLÉPHONE</p>
-                                <p class="font-bold">+224 610 30 50 71</p>
-                            </div>
-                        </a>
-                        <div class="flex items-center gap-4 group">
-                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-on-surface-variant group-hover:bg-secondary-fixed/20 group-hover:text-secondary-fixed transition-all">
-                                <span class="material-symbols-outlined">location_on</span>
-                            </div>
-                            <div>
-                                <p class="text-xs uppercase text-on-surface-variant">LOCATION</p>
-                                <p class="font-bold">Wanindara, Conakry, Guinée</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card p-5 sm:p-8 rounded-2xl relative">
-                    <div class="scanline-effect opacity-30"></div>
-                    <form class="space-y-6" id="contact-form" novalidate>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="user_name">NOM_ENTRÉE</label>
-                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Votre Nom" type="text" id="user_name" name="user_name" required />
-                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="user_email">EMAIL_ENTRÉE</label>
-                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="email@adresse.com" type="email" id="user_email" name="user_email" required />
-                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="subject">SUJET</label>
-                            <input class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Objet de votre message" type="text" id="subject" name="subject" required />
-                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-secondary-fixed px-1" for="message">MESSAGE</label>
-                            <textarea class="w-full bg-surface-container border border-white/10 rounded-lg p-4 focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed text-on-surface outline-none transition-all" placeholder="Comment puis-je vous aider ?" rows="4" id="message" name="message" required></textarea>
-                            <p class="field-error hidden text-[11px] text-red-400 px-1"></p>
-                        </div>
-                        <button class="w-full py-4 bg-secondary-container text-on-secondary-container font-bold rounded-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 active-glow disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100" type="submit" id="submit-btn">
-                            <span class="material-symbols-outlined" id="submit-icon">send</span> <span id="submit-label">ENVOYER_MESSAGE</span>
-                        </button>
-                        <p id="form-status" class="text-sm font-mono px-1 min-h-[1.25rem]" role="status" aria-live="polite"></p>
-                    </form>
+                    <div class="text-white font-medium">Linux Hardening</div>
+                    <div class="text-[10px] text-gray-400">CLI, permissions, hardening</div>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-surface-container-lowest border-t border-white/5 w-full py-8 md:py-12">
-        <div class="flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 max-w-container-max mx-auto gap-6 md:gap-8">
-            <div class="text-center md:text-left">
-                <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
-                    <svg class="w-6 h-6 shrink-0" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="#00D9FF" stroke-width="1.6" />
-                        <path d="M20 12 L27 15.5 V22 C27 26 24 28.5 20 30 C16 28.5 13 26 13 22 V15.5 Z" fill="rgba(0,217,255,0.12)" stroke="#00D9FF" stroke-width="1.4" />
-                        <path d="M17 20.5 L19.3 22.8 L23.5 18.2" fill="none" stroke="#00D9FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <div class="text-secondary-fixed font-bold text-xl">S.C. KOLIE</div>
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-neonGreen/30">
+                <span class="text-neonGreen font-bold">✓</span>
+                <div>
+                    <div class="text-white font-medium">Vulnerability Scanning</div>
+                    <div class="text-[10px] text-gray-400">Nmap, Wireshark, Audit</div>
                 </div>
-                <p class="font-mono text-[10px] text-on-surface-variant opacity-60">© <span id="year"></span> S.C. KOLIE</p>
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-center md:text-left">
-                <a class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant hover:text-secondary-fixed transition-colors text-sm" href="mailto:kseverin189@gmail.com">
-                    <span class="material-symbols-outlined text-base">mail</span> kseverin189@gmail.com
-                </a>
-                <a class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant hover:text-secondary-fixed transition-colors text-sm" href="tel:+224610305071">
-                    <span class="material-symbols-outlined text-base">call</span> +224 610 30 50 71
-                </a>
-                <div class="flex items-center justify-center md:justify-start gap-2 text-on-surface-variant text-sm">
-                    <span class="material-symbols-outlined text-base">location_on</span> Wanindara, Conakry, Guinée
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-amber-400/40">
+                <span class="text-amber-400 font-bold">⏳</span>
+                <div>
+                    <div class="text-white font-medium">Pentest Avancé</div>
+                    <div class="text-[10px] text-gray-400">PrivEsc, Red Teaming, Exploits</div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-amber-400/40">
+                <span class="text-amber-400 font-bold">⏳</span>
+                <div>
+                    <div class="text-white font-medium">Security Operations</div>
+                    <div class="text-[10px] text-gray-400">Wazuh SIEM, Log Analysis, SOC</div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3 p-3 bg-[#080e18] rounded border border-amber-400/40">
+                <span class="text-amber-400 font-bold">⏳</span>
+                <div>
+                    <div class="text-white font-medium">DevSecOps &amp; Cloud</div>
+                    <div class="text-[10px] text-gray-400">CI/CD, Docker, Hardened Cloud</div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
+<!-- ========================================================================
+     CONTACT SECTION
+     ======================================================================== -->
+<section class="py-24 max-w-6xl mx-auto px-6 relative border-t border-cyberBorder/50 scroll-reveal" id="contact">
+    <!-- Section Title -->
+    <div class="mb-16">
+        <div class="font-mono text-xs text-neonGreen font-medium tracking-wide flex items-center gap-2 mb-2">
+            <span>// 06. contact</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Prendre contact</h2>
+        <div class="w-16 h-1 bg-neonGreen mt-3 rounded shadow-[0_0_8px_#00ff66]"></div>
+        <p class="mt-4 text-xs font-mono text-gray-400">Disponible pour des opportunités professionnelles, missions d'ingénierie système ou collaborations de sécurité.</p>
+    </div>
+
+    <!-- Contact Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Contact Form in Terminal Card -->
+        <div class="lg:col-span-7 bg-terminalBg border border-cyberBorder rounded-lg overflow-hidden shadow-terminal">
+            <div class="bg-[#0b131f] px-4 py-2 border-b border-cyberBorder flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
+                    <span class="font-mono text-xs text-gray-400 ml-2">send_dispatch.sh</span>
+                </div>
+                <span class="font-mono text-[10px] text-neonGreen">SECURE_TRANSMISSION</span>
+            </div>
+            
+            <form id="contact-form" action="https://formsubmit.co/kseverin189@gmail.com" method="POST" class="p-6 space-y-4 font-mono text-xs" novalidate>
+                <!-- Anti-spam Honeypot & Configuration -->
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_subject" value="[Portfolio] Nouveau message de contact" />
+                <div class="space-y-1">
+                    <label class="block text-neonCyan mb-1 font-semibold" for="user_name">// Nom complet</label>
+                    <input id="user_name" name="user_name" class="w-full bg-[#080e18] border border-cyberBorder rounded px-3.5 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen font-mono transition-colors" placeholder="Votre nom" required type="text" autocomplete="name" />
+                    <div class="field-error hidden text-red-400 text-[11px] pt-1"></div>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-neonCyan mb-1 font-semibold" for="user_email">// Adresse email</label>
+                    <input id="user_email" name="user_email" class="w-full bg-[#080e18] border border-cyberBorder rounded px-3.5 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen font-mono transition-colors" placeholder="votre.email@exemple.com" required type="email" autocomplete="email" />
+                    <div class="field-error hidden text-red-400 text-[11px] pt-1"></div>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-neonCyan mb-1 font-semibold" for="subject">// Objet</label>
+                    <input id="subject" name="subject" class="w-full bg-[#080e18] border border-cyberBorder rounded px-3.5 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen font-mono transition-colors" placeholder="Mission / Opportunité / Collaboration" type="text" />
+                    <div class="field-error hidden text-red-400 text-[11px] pt-1"></div>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-neonCyan mb-1 font-semibold" for="message">// Message</label>
+                    <textarea id="message" name="message" class="w-full bg-[#080e18] border border-cyberBorder rounded px-3.5 py-2.5 text-white placeholder-gray-600 focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen font-mono transition-colors" placeholder="Décrivez votre besoin, votre infrastructure ou votre proposition..." required rows="5"></textarea>
+                    <div class="field-error hidden text-red-400 text-[11px] pt-1"></div>
+                </div>
+                <button id="submit-btn" class="w-full py-3 rounded bg-neonGreen text-black font-mono font-bold text-xs hover:bg-[#00e65c] shadow-[0_0_18px_rgba(0,255,102,0.4)] transition-all flex items-center justify-center gap-2 cursor-pointer" type="submit">
+                    <span>&gt;</span>
+                    <span id="submit-label">ENVOYER_MESSAGE</span>
+                </button>
+                <div id="form-status" class="text-xs font-mono min-h-[1.25rem] text-gray-400 pt-1"></div>
+            </form>
+        </div>
+
+        <!-- Direct Channels and Fingerprint Right Column -->
+        <div class="lg:col-span-5 space-y-6 font-mono text-xs">
+            <div class="bg-terminalBg border border-cyberBorder rounded-lg p-6 shadow-terminal space-y-4">
+                <h4 class="text-white font-bold text-sm flex items-center gap-2">
+                    <span class="text-neonCyan">▸</span> CANAUX DIRECTS
+                </h4>
+                <div class="space-y-3.5">
+                    <div>
+                        <div class="text-gray-400 text-[11px]">Boîte mail:</div>
+                        <a class="text-neonGreen hover:underline font-semibold text-sm" href="mailto:kseverin189@gmail.com">kseverin189@gmail.com</a>
+                    </div>
+                    <div>
+                        <div class="text-gray-400 text-[11px]">Réseau professionnel:</div>
+                        <a class="text-neonCyan hover:underline" href="https://www.linkedin.com/in/severincecekolie05/" target="_blank" rel="noopener noreferrer">linkedin.com/in/severincecekolie05</a>
+                    </div>
+                    <div>
+                        <div class="text-gray-400 text-[11px]">Dépôts de code:</div>
+                        <a class="text-neonCyan hover:underline" href="https://github.com/severin-cece-kolie" target="_blank" rel="noopener noreferrer">github.com/severin-cece-kolie</a>
+                    </div>
+                    <div>
+                        <div class="text-gray-400 text-[11px]">Localisation:</div>
+                        <span class="text-gray-200">Wanindara / Ratoma, Conakry, Guinée</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-terminalBg border border-cyberBorder rounded-lg p-6 shadow-terminal space-y-2.5">
+                <h4 class="text-white font-bold text-sm flex items-center gap-2">
+                    <span class="text-neonGreen">▸</span> PGP FINGERPRINT
+                </h4>
+                <p class="text-[11px] text-gray-400 leading-relaxed font-mono break-all">4D98 B3E2 91A0 F4C7 8962 B78E 0524 C19A FF82 60E4</p>
+                <span class="inline-block px-2 py-0.5 rounded bg-[#09121d] border border-cyberBorder text-neonGreen text-[10px]">KEYS AVAILABLE UPON REQUEST</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================================================
+     FOOTER
+     ======================================================================== -->
+<footer class="border-t border-cyberBorder/60 py-12 bg-[#02050b] font-mono text-xs">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2 text-gray-400">
+            <span class="w-2 h-2 rounded-full bg-neonGreen inline-block shadow-[0_0_8px_#00ff66]"></span>
+            <span>kolie@secops:~$ echo "Securing Systems. Building Solutions. <span class="current-year"></span>."</span>
+        </div>
+        <div class="text-gray-500 text-center sm:text-right">
+            © <span class="current-year"></span> Sévérin Cécé KOLIE. All systems operational.
+        </div>
+    </div>
+</footer>
+
+<!-- Production Script Bundle -->
+<script src="script.js"></script>
 </body>
-
 </html>

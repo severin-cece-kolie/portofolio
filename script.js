@@ -1,26 +1,13 @@
 /**
- * S.C. KOLIE Portfolio - Unified Technical Engine
- * Architecture: Cyber-Premium
+ * Sévérin Cécé KOLIE - Portfolio
+ * Interactive Script: Hero Terminal Typing Engine, Scroll Reveal, Mobile Drawer, Modal, Contact Form
  */
 
-// --- EMAIL CONFIGURATION (contact form) -----------------------------------
-// This site is a static frontend (no server/build step), so the contact
-// form sends messages using EmailJS (https://www.emailjs.com — free tier
-// available). To activate it:
-//   1. Create an EmailJS account and an Email Service connected to
-//      kseverin189@gmail.com.
-//   2. Create an Email Template with variables: user_name, user_email,
-//      subject, message.
-//   3. Copy your Public Key, Service ID and Template ID below.
-// Note: EmailJS's "Public Key" is designed to be used in client-side code
-// (like a payment provider's "publishable key") — it is not a secret.
-// Actual sending is restricted on EmailJS's side to the allowed
-// origins/domains configured in your EmailJS account, so no private
-// credential is ever exposed in this file.
+// EmailJS optional fallback configuration
 const EMAILJS_CONFIG = {
-    PUBLIC_KEY: "0otH246Dum7oO7ohI",
-    SERVICE_ID: "service_5mlw0ia",
-    TEMPLATE_ID: "template_nql415d",
+    PUBLIC_KEY: "YOUR_EMAILJS_PUBLIC_KEY",
+    SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID",
+    TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID",
     TO_EMAIL: "kseverin189@gmail.com"
 };
 
@@ -31,281 +18,329 @@ function isEmailConfigured() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initSplashScreen();
-    initGlobalShader();
-    initHeroOrb();
-    initTypingEffect();
+    initHeroTerminal();
     initScrollReveal();
-    initFormHandling();
-    
-    // Set dynamic year in footer
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    initMobileNav();
+    initCertModal();
+    initContactForm();
+    initDynamicYear();
 });
 
-// --- 1. INTRO SPLASH SCREEN ---
-function initSplashScreen() {
-    const splash = document.getElementById('splash-screen');
-    const loadingItems = document.querySelectorAll('.loading-item');
-    const percentEl = document.getElementById('loading-percent');
-    const authSuccess = document.getElementById('auth-success');
-    const mainContent = document.getElementById('main-content');
-    
-    if (!splash) return;
+/* ==========================================================================
+   1. HERO TERMINAL TYPING ENGINE & SEAMLESS LOOP
+   ========================================================================== */
+function initHeroTerminal() {
+    const terminalBody = document.getElementById('hero-terminal-body');
+    if (!terminalBody) return;
 
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.floor(Math.random() * 5) + 1;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-            showAuthSuccess();
+    // Terminal script sequence (Linux sysadmin / cyber flavor in French)
+    const sequence = [
+        {
+            type: 'cmd',
+            prompt: 'kolie@secops:~$',
+            command: 'whoami'
+        },
+        {
+            type: 'output',
+            lines: [
+                { prefix: '>', text: 'Sévérin Cécé KOLIE', highlight: 'text-neonCyan font-semibold' },
+                { prefix: '>', text: 'Junior Cybersécurité & Administration système, réseaux', highlight: 'text-white font-medium' }
+            ]
+        },
+        {
+            type: 'cmd',
+            prompt: 'kolie@secops:~$',
+            command: 'cat profile.txt'
+        },
+        {
+            type: 'output',
+            lines: [
+                { prefix: '>', text: 'Focus : Pentest Windows & Linux server offensive sécurité', highlight: 'text-neonGreen' },
+                { prefix: '>', text: 'Spécialité : Active Directory, GPO, Hardening, Virtualisation ESXi & Réseaux', highlight: 'text-gray-300' }
+            ]
+        },
+        {
+            type: 'cmd',
+            prompt: 'kolie@secops:~$',
+            command: 'systemctl is-active secops'
+        },
+        {
+            type: 'output',
+            lines: [
+                { prefix: '✓', text: 'Opérationnel — Disponible pour opportunités & projets', highlight: 'text-neonGreen font-semibold' }
+            ]
         }
-        percentEl.textContent = progress.toString().padStart(2, '0') + '%';
-        
-        // Show loading items progressively
-        if (progress > 20) loadingItems[0].classList.add('active');
-        if (progress > 45) loadingItems[1].classList.add('active');
-        if (progress > 70) loadingItems[2].classList.add('active');
-        if (progress > 90) loadingItems[3].classList.add('active');
-    }, 50);
+    ];
 
-    function showAuthSuccess() {
-        authSuccess.classList.remove('hidden');
-        setTimeout(() => {
-            splash.classList.add('hidden');
-            mainContent.classList.remove('opacity-0');
-            document.body.style.overflow = 'auto'; // Re-enable scroll
-        }, 1500);
-    }
-}
-
-// --- 2. GLOBAL BACKGROUND SHADER ---
-function initGlobalShader() {
-    const canvas = document.getElementById('shader-canvas-ANIMATION_2');
-    if (!canvas) return;
-
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (!gl) return;
-
-    function syncSize() {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        if (canvas.width !== w || canvas.height !== h) {
-            canvas.width = w;
-            canvas.height = h;
-            gl.viewport(0, 0, w, h);
-        }
-    }
-    window.addEventListener('resize', syncSize);
-    syncSize();
-
-    const vs = `
-        attribute vec2 a_position;
-        void main() {
-            gl_Position = vec4(a_position, 0.0, 1.0);
-        }
-    `;
-
-    const fs = `
-        precision highp float;
-        uniform float u_time;
-        uniform vec2 u_resolution;
-
-        float network(vec2 uv, float speed) {
-            vec2 grid = fract(uv * 10.0 + u_time * speed) - 0.5;
-            float line = smoothstep(0.48, 0.5, abs(grid.x)) + smoothstep(0.48, 0.5, abs(grid.y));
-            return line * 0.1;
-        }
-
-        void main() {
-            vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-            vec3 color = vec3(0.02, 0.05, 0.1); // Base Navy
-            
-            float g = network(uv, 0.05);
-            color += vec3(0.0, 0.85, 1.0) * g;
-            
-            float pulse = sin(u_time * 0.5) * 0.5 + 0.5;
-            color += vec3(0.0, 0.85, 1.0) * 0.02 * pulse;
-
-            gl_FragColor = vec4(color, 1.0);
-        }
-    `;
-
-    function createShader(gl, type, source) {
-        const shader = gl.createShader(type);
-        gl.shaderSource(shader, source);
-        gl.compileShader(shader);
-        return shader;
+    // Reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        renderStaticTerminal(terminalBody, sequence);
+        return;
     }
 
-    const program = gl.createProgram();
-    gl.attachShader(program, createShader(gl, gl.VERTEX_SHADER, vs));
-    gl.attachShader(program, createShader(gl, gl.FRAGMENT_SHADER, fs));
-    gl.linkProgram(program);
-    gl.useProgram(program);
+    let activeTimeout = null;
+    let isPaused = false;
 
-    const positionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-
-    const positionLocation = gl.getAttribLocation(program, 'a_position');
-    gl.enableVertexAttribArray(positionLocation);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-    const uTime = gl.getUniformLocation(program, 'u_time');
-    const uRes = gl.getUniformLocation(program, 'u_resolution');
-
-    function render(t) {
-        gl.uniform1f(uTime, t * 0.001);
-        gl.uniform2f(uRes, canvas.width, canvas.height);
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        requestAnimationFrame(render);
+    function renderStaticTerminal(container, seq) {
+        container.innerHTML = '';
+        seq.forEach(step => {
+            if (step.type === 'cmd') {
+                const line = document.createElement('div');
+                line.className = 'leading-relaxed text-xs sm:text-sm break-words';
+                line.innerHTML = `<span class="text-neonGreen font-semibold select-none mr-2">${escapeHtml(step.prompt)}</span><span class="text-white font-medium">${escapeHtml(step.command)}</span>`;
+                container.appendChild(line);
+            } else if (step.type === 'output') {
+                const outContainer = document.createElement('div');
+                outContainer.className = 'space-y-1 text-xs sm:text-sm pl-1';
+                step.lines.forEach(l => {
+                    const p = document.createElement('p');
+                    p.className = 'flex items-start text-gray-200';
+                    p.innerHTML = `<span class="text-neonCyan mr-2 font-bold select-none">${escapeHtml(l.prefix)}</span><span class="${l.highlight}">${escapeHtml(l.text)}</span>`;
+                    outContainer.appendChild(p);
+                });
+                container.appendChild(outContainer);
+            }
+        });
+        const finalPrompt = document.createElement('div');
+        finalPrompt.className = 'pt-1 leading-relaxed text-xs sm:text-sm';
+        finalPrompt.innerHTML = `<span class="text-neonGreen font-semibold select-none mr-2">kolie@secops:~$</span><span class="w-2.5 h-4 bg-neonGreen inline-block align-middle animate-cursor shadow-[0_0_8px_#00ff66]"></span>`;
+        container.appendChild(finalPrompt);
     }
-    requestAnimationFrame(render);
-}
 
-// --- 3. THREE.JS HERO ORB ---
-function initHeroOrb() {
-    const container = document.getElementById('threejs-container-ANIMATION_3');
-    if (!container) return;
+    function runAnimationCycle() {
+        if (isPaused) return;
+        terminalBody.innerHTML = '';
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
+        let stepIndex = 0;
 
-    const geometry = new THREE.IcosahedronGeometry(1, 15);
-    const material = new THREE.MeshPhongMaterial({
-        color: 0x00D9FF,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.4
+        function nextStep() {
+            if (isPaused) return;
+
+            if (stepIndex >= sequence.length) {
+                // Animation finished: append final prompt with blinking cursor
+                const finalPrompt = document.createElement('div');
+                finalPrompt.className = 'pt-1 leading-relaxed text-xs sm:text-sm';
+                finalPrompt.innerHTML = `<span class="text-neonGreen font-semibold select-none mr-2">kolie@secops:~$</span><span class="w-2.5 h-4 bg-neonGreen inline-block align-middle animate-cursor shadow-[0_0_8px_#00ff66]"></span>`;
+                terminalBody.appendChild(finalPrompt);
+
+                // Hold visible terminal for 5.5s so user can read, then cleanly loop
+                activeTimeout = setTimeout(() => {
+                    runAnimationCycle();
+                }, 5500);
+                return;
+            }
+
+            const current = sequence[stepIndex];
+            stepIndex++;
+
+            if (current.type === 'cmd') {
+                typeCommand(current.prompt, current.command, () => {
+                    activeTimeout = setTimeout(nextStep, 250);
+                });
+            } else if (current.type === 'output') {
+                renderOutput(current.lines, () => {
+                    activeTimeout = setTimeout(nextStep, 500);
+                });
+            }
+        }
+
+        function typeCommand(promptText, cmdText, doneCallback) {
+            const cmdRow = document.createElement('div');
+            cmdRow.className = 'leading-relaxed text-xs sm:text-sm break-words';
+
+            const promptSpan = document.createElement('span');
+            promptSpan.className = 'text-neonGreen font-semibold select-none mr-2 inline';
+            promptSpan.textContent = promptText;
+
+            const cmdSpan = document.createElement('span');
+            cmdSpan.className = 'text-white font-medium inline';
+
+            const cursorSpan = document.createElement('span');
+            cursorSpan.className = 'w-2 h-3.5 bg-neonGreen inline-block ml-1 align-middle animate-cursor shadow-[0_0_6px_#00ff66]';
+
+            cmdRow.appendChild(promptSpan);
+            cmdRow.appendChild(cmdSpan);
+            cmdRow.appendChild(cursorSpan);
+            terminalBody.appendChild(cmdRow);
+
+            let charIndex = 0;
+
+            function typeNextChar() {
+                if (isPaused) return;
+
+                if (charIndex < cmdText.length) {
+                    cmdSpan.textContent += cmdText.charAt(charIndex);
+                    charIndex++;
+                    // Natural typing cadence variation (35ms - 75ms)
+                    const delay = 35 + Math.floor(Math.random() * 40);
+                    activeTimeout = setTimeout(typeNextChar, delay);
+                } else {
+                    cursorSpan.remove();
+                    doneCallback();
+                }
+            }
+
+            activeTimeout = setTimeout(typeNextChar, 100);
+        }
+
+        function renderOutput(lines, doneCallback) {
+            const outContainer = document.createElement('div');
+            outContainer.className = 'space-y-1 text-xs sm:text-sm pl-1';
+
+            lines.forEach(lineData => {
+                const p = document.createElement('p');
+                p.className = 'flex items-start text-gray-200';
+                p.innerHTML = `<span class="text-neonCyan mr-2 font-bold select-none">${escapeHtml(lineData.prefix)}</span><span class="${lineData.highlight}">${escapeHtml(lineData.text)}</span>`;
+                outContainer.appendChild(p);
+            });
+
+            terminalBody.appendChild(outContainer);
+            doneCallback();
+        }
+
+        nextStep();
+    }
+
+    // Page Visibility handling: pause when user navigates away, resume when returning
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isPaused = true;
+            if (activeTimeout) clearTimeout(activeTimeout);
+        } else {
+            isPaused = false;
+            runAnimationCycle();
+        }
     });
-    const orb = new THREE.Mesh(geometry, material);
-    scene.add(orb);
 
-    const light = new THREE.PointLight(0x00D9FF, 2, 50);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x102030));
-
-    camera.position.z = 3;
-
-    function animate() {
-        requestAnimationFrame(animate);
-        orb.rotation.y += 0.003;
-        orb.rotation.x += 0.001;
-        const scale = 1 + Math.sin(Date.now() * 0.001) * 0.05;
-        orb.scale.set(scale, scale, scale);
-        renderer.render(scene, camera);
-    }
-
-    window.addEventListener('resize', () => {
-        const w = container.clientWidth;
-        const h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-    });
-
-    animate();
+    runAnimationCycle();
 }
 
-// --- 4. TERMINAL TYPING EFFECT ---
-function initTypingEffect() {
-    const text = "initialisation du système : activation du module cybersécurité... accès autorisé. analyse de l'infrastructure et du réseau... build 24.0.1 opérationnel.";
-    let index = 0;
-    const typingText = document.getElementById('typing-text');
-    if (!typingText) return;
-
-    function type() {
-        if (index < text.length) {
-            typingText.innerHTML += text.charAt(index);
-            index++;
-            setTimeout(type, 30);
-        }
-    }
-    setTimeout(type, 3000); // Wait for splash
-}
-
-// --- 5. SCROLL REVEAL ---
+/* ==========================================================================
+   2. SCROLL REVEAL & PROGRESSIVE TIMELINE ANIMATION
+   ========================================================================== */
 function initScrollReveal() {
+    const revealItems = document.querySelectorAll('.scroll-reveal, .timeline-entry');
+    if (!revealItems.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+        revealItems.forEach(item => item.classList.add('in-view'));
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
 
-    document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
+    revealItems.forEach(item => observer.observe(item));
+}
+
+/* ==========================================================================
+   3. MOBILE NAVIGATION DRAWER
+   ========================================================================== */
+function initMobileNav() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-drawer-overlay');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!toggleBtn || !drawer || !overlay) return;
+
+    function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    toggleBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeDrawer);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+            closeDrawer();
+        }
     });
 }
 
-// --- 6. DRAWER TOGGLE ---
-window.toggleDrawer = function() {
-    const drawer = document.getElementById('drawer');
-    if (drawer) drawer.classList.toggle('-translate-x-full');
-}
-
-// --- 7. CERTIFICATIONS VIEW TOGGLE
-window.toggleCertificationsView = function() {
-    const grid = document.getElementById('certifications-grid');
-    const section = document.getElementById('certifications');
-    
-    if (!grid || !section) return;
-    
-    // Toggle between grid and expanded view
-    if (grid.classList.contains('expanded-view')) {
-        grid.classList.remove('expanded-view');
-        grid.style.gridTemplateColumns = '';
-        section.classList.remove('expanded-section');
-    } else {
-        grid.classList.add('expanded-view');
-        grid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-        section.classList.add('expanded-section');
-    }
-}
-
-// --- 7.5. CERTIFICATION IMAGE MODAL
-window.openCertificationModal = function(imgSrc, title) {
-    // Create modal if it doesn't exist
+/* ==========================================================================
+   4. CERTIFICATE IMAGE MODAL
+   ========================================================================== */
+function initCertModal() {
     let modal = document.getElementById('cert-modal');
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'cert-modal';
-        modal.className = 'fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4 hidden';
+        modal.className = 'cert-modal-overlay hidden';
         modal.innerHTML = `
-            <button onclick="closeCertificationModal()" class="absolute top-4 right-4 text-white hover:text-secondary-fixed transition-colors">
-                <span class="material-symbols-outlined text-4xl">close</span>
-            </button>
-            <img id="cert-modal-img" class="max-w-full max-h-[90vh] object-contain rounded-lg" src="" alt="">
-            <p id="cert-modal-title" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white font-bold text-lg bg-black/50 px-4 py-2 rounded-full"></p>
+            <div class="cert-modal-content">
+                <button type="button" class="cert-modal-close" id="cert-modal-close-btn" aria-label="Fermer la certification">✕</button>
+                <img id="cert-modal-img" src="" alt="Certification Sévérin Cécé KOLIE" />
+                <div id="cert-modal-title" class="cert-modal-title"></div>
+            </div>
         `;
         document.body.appendChild(modal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) window.closeCertificationModal();
+        });
+
+        document.getElementById('cert-modal-close-btn').addEventListener('click', () => {
+            window.closeCertificationModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                window.closeCertificationModal();
+            }
+        });
     }
-    
-    // Set content
-    document.getElementById('cert-modal-img').src = imgSrc;
-    document.getElementById('cert-modal-title').textContent = title;
-    
-    // Show modal
-    modal.classList.remove('hidden');
 }
+
+window.openCertificationModal = function(imgSrc, title) {
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('cert-modal-img');
+    const modalTitle = document.getElementById('cert-modal-title');
+    if (!modal || !modalImg || !modalTitle) return;
+
+    modalImg.src = imgSrc;
+    modalImg.alt = title;
+    modalTitle.textContent = title;
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+};
 
 window.closeCertificationModal = function() {
     const modal = document.getElementById('cert-modal');
     if (modal) {
         modal.classList.add('hidden');
+        document.body.style.overflow = '';
     }
-}
+};
 
-// --- 8. FORM HANDLING ---
-function initFormHandling() {
+/* ==========================================================================
+   5. CONTACT FORM & SECURITY SANITIZATION
+   ========================================================================== */
+function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
@@ -314,133 +349,192 @@ function initFormHandling() {
     }
 
     const fields = {
-        user_name: { el: form.querySelector('#user_name'), validate: validateName },
-        user_email: { el: form.querySelector('#user_email'), validate: validateEmail },
-        subject: { el: form.querySelector('#subject'), validate: validateRequired },
-        message: { el: form.querySelector('#message'), validate: validateMessage }
+        user_name: { el: document.getElementById('user_name'), validate: val => (!val.trim() ? 'Veuillez renseigner votre nom.' : val.trim().length < 2 ? 'Nom trop court.' : '') },
+        user_email: { el: document.getElementById('user_email'), validate: val => (!val.trim() ? 'Veuillez renseigner votre email.' : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) ? 'Adresse email invalide.' : '') },
+        subject: { el: document.getElementById('subject'), validate: val => '' },
+        message: { el: document.getElementById('message'), validate: val => (!val.trim() ? 'Veuillez écrire votre message.' : val.trim().length < 10 ? 'Message trop court (10 caractères min.).' : '') }
     };
 
     const submitBtn = document.getElementById('submit-btn');
-    const submitIcon = document.getElementById('submit-icon');
     const submitLabel = document.getElementById('submit-label');
     const statusEl = document.getElementById('form-status');
 
-    // Live validation as the user types/leaves a field
+    // Live validation
     Object.values(fields).forEach(({ el, validate }) => {
         if (!el) return;
-        el.addEventListener('blur', () => showFieldError(el, validate(el.value)));
+        const errContainer = el.parentElement.querySelector('.field-error');
         el.addEventListener('input', () => {
-            if (!el.closest('.space-y-1').querySelector('.field-error').classList.contains('hidden')) {
-                showFieldError(el, validate(el.value));
+            if (errContainer && !errContainer.classList.contains('hidden')) {
+                const error = validate(el.value);
+                if (!error) {
+                    errContainer.textContent = '';
+                    errContainer.classList.add('hidden');
+                    el.classList.remove('border-red-500/80');
+                }
+            }
+        });
+        el.addEventListener('blur', () => {
+            const error = validate(el.value);
+            if (errContainer) {
+                if (error) {
+                    errContainer.textContent = error;
+                    errContainer.classList.remove('hidden');
+                    el.classList.add('border-red-500/80');
+                } else {
+                    errContainer.textContent = '';
+                    errContainer.classList.add('hidden');
+                    el.classList.remove('border-red-500/80');
+                }
             }
         });
     });
 
-    function validateRequired(value) {
-        return value.trim().length > 0 ? '' : 'Ce champ est requis.';
-    }
-
-    function validateName(value) {
-        if (!value.trim()) return 'Veuillez indiquer votre nom.';
-        if (value.trim().length < 2) return 'Le nom est trop court.';
-        return '';
-    }
-
-    function validateEmail(value) {
-        if (!value.trim()) return 'Veuillez indiquer votre email.';
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailPattern.test(value.trim()) ? '' : 'Adresse email invalide.';
-    }
-
-    function validateMessage(value) {
-        if (!value.trim()) return 'Veuillez écrire un message.';
-        if (value.trim().length < 10) return 'Votre message est trop court (10 caractères min.).';
-        return '';
-    }
-
-    function showFieldError(el, errorMessage) {
-        const errorEl = el.closest('.space-y-1').querySelector('.field-error');
-        if (!errorEl) return true === !errorMessage;
-        if (errorMessage) {
-            errorEl.textContent = errorMessage;
-            errorEl.classList.remove('hidden');
-            el.classList.add('border-red-500/70');
-        } else {
-            errorEl.textContent = '';
-            errorEl.classList.add('hidden');
-            el.classList.remove('border-red-500/70');
-        }
-        return !errorMessage;
-    }
-
-    function setStatus(message, type) {
+    function setStatus(msg, type) {
         if (!statusEl) return;
-        statusEl.textContent = message;
-        statusEl.classList.remove('text-red-400', 'text-secondary-fixed', 'text-on-surface-variant');
-        statusEl.classList.add(
-            type === 'error' ? 'text-red-400' : type === 'success' ? 'text-secondary-fixed' : 'text-on-surface-variant'
-        );
+        statusEl.textContent = msg;
+        statusEl.className = 'text-xs font-mono min-h-[1.25rem] transition-colors ' +
+            (type === 'error' ? 'text-red-400' : type === 'success' ? 'text-neonGreen' : 'text-gray-400');
     }
 
-    function setLoading(isLoading) {
-        submitBtn.disabled = isLoading;
-        submitIcon.textContent = isLoading ? 'sync' : 'send';
-        submitIcon.classList.toggle('animate-spin', isLoading);
-        submitLabel.textContent = isLoading ? 'TRANSMISSION...' : 'ENVOYER_MESSAGE';
+    function setStatusHtml(htmlStr, type) {
+        if (!statusEl) return;
+        statusEl.innerHTML = htmlStr;
+        statusEl.className = 'text-xs font-mono min-h-[1.25rem] transition-colors ' +
+            (type === 'error' ? 'text-red-400' : type === 'success' ? 'text-neonGreen' : 'text-gray-400');
     }
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         setStatus('', 'idle');
 
-        // Validate every field; block submission on the first failure
         let isValid = true;
         Object.values(fields).forEach(({ el, validate }) => {
             if (!el) return;
             const error = validate(el.value);
-            if (!showFieldError(el, error)) isValid = false;
+            const errContainer = el.parentElement.querySelector('.field-error');
+            if (error) {
+                isValid = false;
+                if (errContainer) {
+                    errContainer.textContent = error;
+                    errContainer.classList.remove('hidden');
+                    el.classList.add('border-red-500/80');
+                }
+            }
         });
 
-        // Basic protection against malformed / suspicious input (e.g. raw HTML/script injection)
+        // Anti-injection check
         const suspiciousPattern = /<script|<\/script|javascript:/i;
-        const allValues = Object.values(fields).map(({ el }) => el?.value || '').join(' ');
-        if (suspiciousPattern.test(allValues)) {
-            setStatus("Votre message contient du contenu non autorisé.", 'error');
+        const combined = Object.values(fields).map(f => f.el?.value || '').join(' ');
+        if (suspiciousPattern.test(combined)) {
+            setStatus("Format de message non autorisé.", 'error');
             return;
         }
 
         if (!isValid) {
-            setStatus('Veuillez corriger les champs en surbrillance.', 'error');
+            setStatus('Veuillez renseigner correctement les champs requis.', 'error');
             return;
         }
 
-        if (!window.emailjs || !isEmailConfigured()) {
-            console.warn('[Contact form] EmailJS is not configured yet — see EMAILJS_CONFIG in script.js.');
-            setStatus("Le formulaire n'est pas encore configuré. Merci de me contacter directement à kseverin189@gmail.com.", 'error');
-            return;
-        }
+        // Set loading state
+        submitBtn.disabled = true;
+        submitLabel.textContent = 'TRANSMISSION_EN_COURS...';
 
-        setLoading(true);
-
-        const templateParams = {
-            user_name: fields.user_name.el.value.trim(),
-            user_email: fields.user_email.el.value.trim(),
-            subject: fields.subject.el.value.trim(),
+        const rawSubject = fields.subject.el.value.trim() || 'Contact depuis Portfolio';
+        const payload = {
+            name: fields.user_name.el.value.trim(),
+            email: fields.user_email.el.value.trim(),
+            _subject: `[Portfolio] ${rawSubject}`,
+            _replyto: fields.user_email.el.value.trim(),
             message: fields.message.el.value.trim(),
-            to_email: EMAILJS_CONFIG.TO_EMAIL
+            _template: 'table',
+            _captcha: 'false'
         };
 
-        emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, templateParams)
-            .then(() => {
-                setStatus('Message transmis avec succès ! Je reviens vers vous rapidement.', 'success');
-                form.reset();
-            })
-            .catch((err) => {
-                console.error('[Contact form] EmailJS send failed:', err);
-                setStatus("Échec de l'envoi. Merci de réessayer ou de m'écrire directement à kseverin189@gmail.com.", 'error');
-            })
-            .finally(() => {
-                setLoading(false);
+        try {
+            // Primary Transport: FormSubmit AJAX endpoint to kseverin189@gmail.com
+            const res = await fetch('https://formsubmit.co/ajax/kseverin189@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
+
+            let data = null;
+            try { data = await res.json(); } catch (_) {}
+
+            if (res.ok && data && (data.success === 'true' || data.success === true)) {
+                setStatus('✓ Message transmis avec succès ! Je reviens vers vous rapidement.', 'success');
+                form.reset();
+                return;
+            } else if (data && data.message && data.message.toLowerCase().includes('activation')) {
+                setStatus('✓ Message envoyé ! (Note : un email d\'activation unique FormSubmit a été envoyé sur kseverin189@gmail.com).', 'success');
+                form.reset();
+                return;
+            }
+
+            // Secondary Transport: serverless /api/send-email if deployed with backend
+            const serverlessRes = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_name: payload.name,
+                    user_email: payload.email,
+                    subject: rawSubject,
+                    message: payload.message
+                })
+            }).catch(() => null);
+
+            if (serverlessRes && serverlessRes.ok) {
+                setStatus('✓ Message transmis avec succès ! Je reviens vers vous rapidement.', 'success');
+                form.reset();
+                return;
+            }
+
+            // Tertiary Transport: EmailJS fallback if client keys configured
+            if (window.emailjs && isEmailConfigured()) {
+                await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, {
+                    user_name: payload.name,
+                    user_email: payload.email,
+                    subject: rawSubject,
+                    message: payload.message,
+                    to_email: EMAILJS_CONFIG.TO_EMAIL
+                });
+                setStatus('✓ Message transmis avec succès ! Je reviens vers vous rapidement.', 'success');
+                form.reset();
+                return;
+            }
+
+            throw new Error('All transports failed');
+        } catch (err) {
+            // Direct mailto fallback link so message is never lost
+            const mailtoUrl = `mailto:kseverin189@gmail.com?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent('Nom: ' + payload.name + '\nEmail: ' + payload.email + '\n\nMessage:\n' + payload.message)}`;
+            setStatusHtml(`Transmission réseau indisponible. <a class="underline text-neonGreen hover:text-white" href="${mailtoUrl}">Cliquez ici pour envoyer via votre messagerie</a>.`, 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitLabel.textContent = 'ENVOYER_MESSAGE';
+        }
     });
+}
+
+/* ==========================================================================
+   6. UTILITIES
+   ========================================================================== */
+function initDynamicYear() {
+    const yearEls = document.querySelectorAll('.current-year');
+    const year = new Date().getFullYear();
+    yearEls.forEach(el => {
+        el.textContent = year;
+    });
+}
+
+function escapeHtml(str) {
+    if (!str) return '';
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
