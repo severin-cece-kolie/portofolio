@@ -5,9 +5,9 @@
 
 // EmailJS optional fallback configuration
 const EMAILJS_CONFIG = {
-    PUBLIC_KEY: "YOUR_EMAILJS_PUBLIC_KEY",
-    SERVICE_ID: "YOUR_EMAILJS_SERVICE_ID",
-    TEMPLATE_ID: "YOUR_EMAILJS_TEMPLATE_ID",
+    PUBLIC_KEY: "0otH246Dum7oO7ohI",
+    SERVICE_ID: "service_5mlw0ia",
+    TEMPLATE_ID: "template_nql415d",
     TO_EMAIL: "kseverin189@gmail.com"
 };
 
