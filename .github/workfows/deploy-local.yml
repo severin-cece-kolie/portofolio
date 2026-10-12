@@ -1,0 +1,11 @@
+name: Déploiement SRV-LOCAL
+on:
+  push:
+    branches: [develop]
+concurrency: deploy-local
+jobs:
+  deploy:
+    runs-on: [self-hosted, srv-local]
+    steps:
+      - name: Déployer la branche develop
+        run: /opt/tulip/deploy.sh develop
