@@ -1,4 +1,4 @@
-name: Deploy Portfolio to srv-local
+﻿name: Deploy Portfolio to srv-local
 
 on:
   push:
@@ -18,4 +18,5 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Deploy website on srv-local
-        run: sudo /opt/tulip/deploy.sh
+        run: sudo -n /opt/tulip/deploy.sh
+
