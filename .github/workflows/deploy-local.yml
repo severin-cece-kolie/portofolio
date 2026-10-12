@@ -1,11 +1,21 @@
-name: Déploiement SRV-LOCAL
+name: Deploy Portfolio to srv-local
+
 on:
   push:
-    branches: [develop]
-concurrency: deploy-local
+    branches:
+      - develop
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-srv-local
+  cancel-in-progress: false
+
 jobs:
   deploy:
-    runs-on: [self-hosted, srv-local]
+    runs-on: self-hosted
     steps:
-      - name: Déployer la branche develop
-        run: /opt/tulip/deploy.sh develop
+      - name: Deploy website on srv-local
+        run: sudo /opt/tulip/deploy.sh
