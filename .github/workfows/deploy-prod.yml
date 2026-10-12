@@ -1,0 +1,11 @@
+name: Déploiement SRV-PROD
+on:
+  push:
+    branches: [main]
+concurrency: deploy-prod
+jobs:
+  deploy:
+    runs-on: [self-hosted, srv-prod]
+    steps:
+      - name: Déployer la branche main
+        run: /opt/tulip/deploy.sh main
